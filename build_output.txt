@@ -1,0 +1,32 @@
+❯ Building...
+✔ Building...
+Application bundle generation failed. [11.575 seconds] - 2026-07-16T19:13:59.818Z
+
+▲ [WARNING] NG8113: RouterLink is not used within the template of Activities [plugin angular-compiler]
+
+    src/app/pages/activities/activities.ts:21:47:
+      21 │ ...s: [CommonModule, LucideAngularModule, RouterLink, TranslatePipe],
+         ╵                                           ~~~~~~~~~~
+
+
+▲ [WARNING] NG8113: RouterLink is not used within the template of Join [plugin angular-compiler]
+
+    src/app/pages/join/join.ts:10:12:
+      10 │   imports: [RouterLink, LucideAngularModule, TranslatePipe, Reacti...
+         ╵             ~~~~~~~~~~
+
+
+▲ [WARNING] NG8113: RouterLink is not used within the template of Partners [plugin angular-compiler]
+
+    src/app/pages/partners/partners.ts:10:12:
+      10 │   imports: [RouterLink, LucideAngularModule, TranslatePipe, Reacti...
+         ╵             ~~~~~~~~~~
+
+
+✘ [ERROR] TS2538: Type 'Signal<string | null>' cannot be used as an index type. [plugin angular-compiler]
+
+    src/app/pages/event-detail/event-detail.ts:39:17:
+      39 │     return event[lang] || event['en'];
+         ╵                  ~~~~
+
+

@@ -5,5 +5,6 @@ export const routes: Routes = [
   { path: 'activities', loadComponent: () => import('./pages/activities/activities').then(m => m.Activities) },
   { path: 'partners', loadComponent: () => import('./pages/partners/partners').then(m => m.Partners) },
   { path: 'join', loadComponent: () => import('./pages/join/join').then(m => m.Join) },
+  { path: 'events/:id', loadComponent: () => import('./pages/event-detail/event-detail').then(m => m.EventDetail) },
   { path: '**', redirectTo: '' }
 ];
