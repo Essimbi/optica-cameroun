@@ -1,0 +1,59 @@
+<header class="header">
+  <div class="container header-container">
+    <div class="logo">
+      <a routerLink="/" class="logo-link">
+        <span class="logo-text">Optica</span>
+        <span class="logo-subtext">Cameroon</span>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">{{ 'HEADER.HOME' | translate }}</a>
+      <a routerLink="/activities" routerLinkActive="active" class="nav-link">{{ 'HEADER.ACTIVITIES' | translate }}</a>
+      <a routerLink="/partners" routerLinkActive="active" class="nav-link">{{ 'HEADER.PARTNERS' | translate }}</a>
+    </nav>
+
+    <!-- Desktop Actions -->
+    <div class="desktop-actions">
+      <div class="lang-selector" (click)="toggleLangMenu()">
+        <lucide-icon [img]="Globe" size="18"></lucide-icon>
+        <span class="lang-text">{{ currentLang() }}</span>
+        <lucide-icon [img]="ChevronDown" size="16"></lucide-icon>
+        
+        @if (isLangMenuOpen()) {
+          <div class="lang-dropdown">
+            <button class="lang-option" (click)="setLang('EN'); $event.stopPropagation()">English</button>
+            <button class="lang-option" (click)="setLang('FR'); $event.stopPropagation()">Français</button>
+          </div>
+        }
+      </div>
+      <a routerLink="/join" class="btn-primary">{{ 'HEADER.JOIN_US' | translate }}</a>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" (click)="toggleMobileMenu()" aria-label="Toggle menu">
+      @if (isMobileMenuOpen()) {
+        <lucide-icon [img]="X"></lucide-icon>
+      } @else {
+        <lucide-icon [img]="Menu"></lucide-icon>
+      }
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  @if (isMobileMenuOpen()) {
+    <div class="mobile-nav">
+      <a routerLink="/" (click)="toggleMobileMenu()" class="mobile-nav-link">{{ 'HEADER.HOME' | translate }}</a>
+      <a routerLink="/activities" (click)="toggleMobileMenu()" class="mobile-nav-link">{{ 'HEADER.ACTIVITIES' | translate }}</a>
+      <a routerLink="/partners" (click)="toggleMobileMenu()" class="mobile-nav-link">{{ 'HEADER.PARTNERS' | translate }}</a>
+      <div class="mobile-actions">
+        <button class="btn-lang" (click)="setLang(currentLang() === 'EN' ? 'FR' : 'EN')">
+          <lucide-icon [img]="Globe" size="18"></lucide-icon>
+          Switch to {{ currentLang() === 'EN' ? 'FR' : 'EN' }}
+        </button>
+        <a routerLink="/join" (click)="toggleMobileMenu()" class="btn-primary full-width">{{ 'HEADER.JOIN_US' | translate }}</a>
+      </div>
+    </div>
+  }
+</header>

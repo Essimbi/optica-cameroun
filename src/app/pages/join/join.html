@@ -1,0 +1,153 @@
+<section class="page-header">
+  <div class="grid-overlay"></div>
+  <div class="container">
+    <h1 class="page-title">{{ 'JOIN.TITLE_1' | translate }} <span class="text-blue">{{ 'JOIN.TITLE_2' | translate }}</span></h1>
+    <p class="page-subtitle">{{ 'JOIN.SUBTITLE' | translate }}</p>
+  </div>
+</section>
+
+<!-- Tab Switcher -->
+<section class="section">
+  <div class="container">
+    <div class="tabs-header">
+      <button class="tab-btn" [class.active]="selectedTab() === 'student'" (click)="selectTab('student')">
+        <lucide-icon [img]="GraduationCap" size="20"></lucide-icon>
+        {{ 'JOIN.TAB_STUDENT' | translate }}
+      </button>
+      <button class="tab-btn" [class.active]="selectedTab() === 'professional'" (click)="selectTab('professional')">
+        <lucide-icon [img]="Briefcase" size="20"></lucide-icon>
+        {{ 'JOIN.TAB_PRO' | translate }}
+      </button>
+    </div>
+
+    <!-- STUDENT TAB -->
+    @if (selectedTab() === 'student') {
+      <div class="tab-content">
+        <div class="tab-intro">
+          <h2 class="tab-title">{{ 'JOIN.STUDENT_TITLE' | translate }}</h2>
+          <p class="tab-desc">{{ 'JOIN.STUDENT_DESC' | translate }}</p>
+          <div class="perks-list">
+            <div class="perk">
+              <lucide-icon [img]="BookOpen" size="18"></lucide-icon>
+              <span>{{ 'JOIN.STUDENT_PERK_1' | translate }}</span>
+            </div>
+            <div class="perk">
+              <lucide-icon [img]="Users" size="18"></lucide-icon>
+              <span>{{ 'JOIN.STUDENT_PERK_2' | translate }}</span>
+            </div>
+            <div class="perk">
+              <lucide-icon [img]="ChevronRight" size="18"></lucide-icon>
+              <span>{{ 'JOIN.STUDENT_PERK_3' | translate }}</span>
+            </div>
+          </div>
+        </div>
+
+        @if (studentFormSubmitted()) {
+          <div class="success-box">
+            <h3>{{ 'JOIN.FORM_SUCCESS_TITLE' | translate }}</h3>
+            <p>{{ 'JOIN.FORM_SUCCESS_DESC' | translate }}</p>
+          </div>
+        } @else {
+          <form [formGroup]="studentForm" (ngSubmit)="submitStudent()" class="join-form" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label>{{ 'JOIN.FIELD_NAME' | translate }}</label>
+                <input type="text" formControlName="name">
+                @if (studentForm.get('name')?.invalid && studentForm.get('name')?.touched) {
+                  <span class="field-error">{{ 'PARTNERS.FIELD_REQUIRED' | translate }}</span>
+                }
+              </div>
+              <div class="form-field">
+                <label>{{ 'JOIN.FIELD_EMAIL' | translate }}</label>
+                <input type="email" formControlName="email">
+                @if (studentForm.get('email')?.invalid && studentForm.get('email')?.touched) {
+                  <span class="field-error">{{ 'PARTNERS.FIELD_EMAIL_INVALID' | translate }}</span>
+                }
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label>{{ 'JOIN.FIELD_INSTITUTION' | translate }}</label>
+                <input type="text" formControlName="institution">
+              </div>
+              <div class="form-field">
+                <label>{{ 'JOIN.FIELD_FIELD' | translate }}</label>
+                <input type="text" formControlName="field">
+              </div>
+            </div>
+            <div class="form-field">
+              <label>{{ 'JOIN.FIELD_MOTIVATION' | translate }}</label>
+              <textarea formControlName="motivation" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              {{ 'JOIN.BTN_STUDENT' | translate }}
+              <lucide-icon [img]="ChevronRight" size="18"></lucide-icon>
+            </button>
+          </form>
+        }
+      </div>
+    }
+
+    <!-- PROFESSIONAL TAB -->
+    @if (selectedTab() === 'professional') {
+      <div class="tab-content">
+        <div class="tab-intro">
+          <h2 class="tab-title">{{ 'JOIN.PRO_TITLE' | translate }}</h2>
+          <p class="tab-desc">{{ 'JOIN.PRO_DESC' | translate }}</p>
+          <div class="perks-list">
+            <div class="perk">
+              <lucide-icon [img]="Users" size="18"></lucide-icon>
+              <span>{{ 'JOIN.PRO_PERK_1' | translate }}</span>
+            </div>
+            <div class="perk">
+              <lucide-icon [img]="BookOpen" size="18"></lucide-icon>
+              <span>{{ 'JOIN.PRO_PERK_2' | translate }}</span>
+            </div>
+            <div class="perk">
+              <lucide-icon [img]="ChevronRight" size="18"></lucide-icon>
+              <span>{{ 'JOIN.PRO_PERK_3' | translate }}</span>
+            </div>
+          </div>
+        </div>
+
+        @if (professionalFormSubmitted()) {
+          <div class="success-box">
+            <h3>{{ 'JOIN.FORM_SUCCESS_TITLE' | translate }}</h3>
+            <p>{{ 'JOIN.FORM_SUCCESS_DESC' | translate }}</p>
+          </div>
+        } @else {
+          <form [formGroup]="professionalForm" (ngSubmit)="submitProfessional()" class="join-form" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label>{{ 'JOIN.FIELD_NAME' | translate }}</label>
+                <input type="text" formControlName="name">
+              </div>
+              <div class="form-field">
+                <label>{{ 'JOIN.FIELD_EMAIL' | translate }}</label>
+                <input type="email" formControlName="email">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label>{{ 'JOIN.FIELD_ORG' | translate }}</label>
+                <input type="text" formControlName="organisation">
+              </div>
+              <div class="form-field">
+                <label>{{ 'JOIN.FIELD_EXPERTISE' | translate }}</label>
+                <input type="text" formControlName="expertise">
+              </div>
+            </div>
+            <div class="form-field">
+              <label>{{ 'JOIN.FIELD_CONTRIBUTION' | translate }}</label>
+              <textarea formControlName="contribution" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              {{ 'JOIN.BTN_PRO' | translate }}
+              <lucide-icon [img]="ChevronRight" size="18"></lucide-icon>
+            </button>
+          </form>
+        }
+      </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,101 @@
+<section class="page-header">
+  <div class="container">
+    <h1 class="page-title">
+      {{ 'ACTIVITIES_PAGE.TITLE_1' | translate }}
+      <span class="text-blue">{{ 'ACTIVITIES_PAGE.TITLE_2' | translate }}</span>
+    </h1>
+    <p class="page-subtitle">{{ 'ACTIVITIES_PAGE.SUBTITLE' | translate }}</p>
+  </div>
+  <div class="grid-overlay"></div>
+</section>
+
+<section class="activities-section">
+  <div class="container">
+    <!-- Filters -->
+    <div class="filters-container">
+      <div class="filter-group">
+        <span class="filter-label">{{ 'ACTIVITIES_PAGE.FILTER_TIMELINE' | translate }}</span>
+        <button class="filter-btn" [class.active]="filterStatus() === 'all'" (click)="setFilterStatus('all')">
+          {{ 'ACTIVITIES_PAGE.FILTER_ALL' | translate }}
+        </button>
+        <button class="filter-btn" [class.active]="filterStatus() === 'upcoming'" (click)="setFilterStatus('upcoming')">
+          {{ 'ACTIVITIES_PAGE.FILTER_UPCOMING' | translate }}
+        </button>
+        <button class="filter-btn" [class.active]="filterStatus() === 'past'" (click)="setFilterStatus('past')">
+          {{ 'ACTIVITIES_PAGE.FILTER_PAST' | translate }}
+        </button>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">{{ 'ACTIVITIES_PAGE.FILTER_BY' | translate }}</span>
+        <button class="filter-btn" [class.active]="filterType() === 'all'" (click)="setFilterType('all')">
+          {{ 'ACTIVITIES_PAGE.FILTER_BOTH' | translate }}
+        </button>
+        <button class="filter-btn" [class.active]="filterType() === 'section'" (click)="setFilterType('section')">
+          {{ 'ACTIVITIES_PAGE.FILTER_SECTION' | translate }}
+        </button>
+        <button class="filter-btn" [class.active]="filterType() === 'chapter'" (click)="setFilterType('chapter')">
+          {{ 'ACTIVITIES_PAGE.FILTER_CHAPTER' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Events Grid -->
+    <div class="events-grid">
+      @for (event of filteredEvents(); track event.id) {
+        <div class="event-card">
+          <div class="event-image-wrapper">
+            <div class="event-image-placeholder" [class.chapter-bg]="event.type === 'chapter'"></div>
+            <div class="event-badges">
+              <span class="badge"
+                [class.badge-upcoming]="event.status === 'upcoming'"
+                [class.badge-past]="event.status === 'past'">
+                {{ getStatusLabelKey(event.status) | translate }}
+              </span>
+              <span class="badge badge-type">
+                {{ getTypeLabelKey(event.type) | translate }}
+              </span>
+            </div>
+          </div>
+
+          <div class="event-content">
+            <h3 class="event-title">{{ event.titleKey | translate }}</h3>
+
+            <div class="event-meta">
+              <div class="meta-item">
+                <lucide-icon [img]="CalendarIcon" size="16" class="meta-icon"></lucide-icon>
+                <span>{{ event.date | date:'longDate' }}</span>
+              </div>
+              <div class="meta-item">
+                <lucide-icon [img]="MapPinIcon" size="16" class="meta-icon"></lucide-icon>
+                <span>{{ event.location }}</span>
+              </div>
+            </div>
+
+            <p class="event-description">{{ event.descKey | translate }}</p>
+
+            <div class="event-actions">
+              @if (event.status === 'upcoming') {
+                <button class="btn-primary full-width">
+                  {{ 'ACTIVITIES_PAGE.BTN_REGISTER' | translate }}
+                  <lucide-icon [img]="ArrowRightIcon" size="16"></lucide-icon>
+                </button>
+              } @else {
+                <button class="btn-secondary full-width">
+                  {{ 'ACTIVITIES_PAGE.BTN_GALLERY' | translate }}
+                  <lucide-icon [img]="ImageIcon" size="16"></lucide-icon>
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <p>{{ 'ACTIVITIES_PAGE.EMPTY' | translate }}</p>
+          <button class="btn-secondary mt-4" (click)="setFilterStatus('all'); setFilterType('all')">
+            {{ 'ACTIVITIES_PAGE.CLEAR_FILTERS' | translate }}
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+</section>

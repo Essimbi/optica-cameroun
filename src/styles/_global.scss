@@ -1,0 +1,54 @@
+@use './variables' as *;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: $bg-dark;
+  color: $text-light;
+  font-family: $font-sans;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: 600;
+  margin-top: 0;
+  color: #fff;
+}
+
+a {
+  color: $accent-blue;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: $accent-blue-hover;
+  }
+}
+
+// Container utility
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: $bg-dark;
+}
+::-webkit-scrollbar-thumb {
+  background: $bg-surface-light;
+  border-radius: $radius-md;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $accent-blue;
+}

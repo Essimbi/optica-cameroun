@@ -1,0 +1,168 @@
+<app-hero></app-hero>
+
+<!-- ① Next Event Highlight -->
+<section class="section highlight-section">
+  <div class="container">
+    <div class="highlight-card">
+      <div class="highlight-content">
+        <span class="highlight-badge">{{ 'HIGHLIGHT.BADGE' | translate }}</span>
+        <h2 class="highlight-title">{{ 'HIGHLIGHT.EVENT_TITLE' | translate }}</h2>
+        <div class="highlight-meta">
+          <div class="meta-item">
+            <lucide-icon [img]="Calendar" size="18"></lucide-icon>
+            {{ 'HIGHLIGHT.EVENT_DATE' | translate }}
+          </div>
+          <div class="meta-item">
+            <lucide-icon [img]="Target" size="18"></lucide-icon>
+            {{ 'HIGHLIGHT.EVENT_LOCATION' | translate }}
+          </div>
+        </div>
+        <p class="highlight-desc">{{ 'HIGHLIGHT.EVENT_DESC' | translate }}</p>
+        <button class="btn-primary">
+          {{ 'HIGHLIGHT.BTN_REGISTER' | translate }}
+          <lucide-icon [img]="ArrowRight" size="18"></lucide-icon>
+        </button>
+      </div>
+      <div class="highlight-image">
+        <div class="image-placeholder"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ② Ecosystem Split -->
+<section class="section about-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        {{ 'ECOSYSTEM.TITLE_1' | translate }}
+        <br><span class="text-blue">{{ 'ECOSYSTEM.TITLE_2' | translate }}</span>
+      </h2>
+      <p class="section-desc">{{ 'ECOSYSTEM.DESC' | translate }}</p>
+    </div>
+    <div class="split-grid">
+      <div class="info-card dark-card">
+        <div class="card-icon">
+          <lucide-icon [img]="Target" size="32"></lucide-icon>
+        </div>
+        <h3 class="card-title">{{ 'ECOSYSTEM.SECTION_TITLE' | translate }}</h3>
+        <p class="card-text">{{ 'ECOSYSTEM.SECTION_DESC' | translate }}</p>
+        <ul class="feature-list">
+          <li>{{ 'ECOSYSTEM.SECTION_FEAT_1' | translate }}</li>
+          <li>{{ 'ECOSYSTEM.SECTION_FEAT_2' | translate }}</li>
+          <li>{{ 'ECOSYSTEM.SECTION_FEAT_3' | translate }}</li>
+        </ul>
+      </div>
+      <div class="info-card light-card">
+        <div class="card-icon text-blue">
+          <lucide-icon [img]="Users" size="32"></lucide-icon>
+        </div>
+        <h3 class="card-title text-dark">{{ 'ECOSYSTEM.CHAPTER_TITLE' | translate }}</h3>
+        <p class="card-text text-dark-muted">{{ 'ECOSYSTEM.CHAPTER_DESC' | translate }}</p>
+        <ul class="feature-list dark-text">
+          <li>{{ 'ECOSYSTEM.CHAPTER_FEAT_1' | translate }}</li>
+          <li>{{ 'ECOSYSTEM.CHAPTER_FEAT_2' | translate }}</li>
+          <li>{{ 'ECOSYSTEM.CHAPTER_FEAT_3' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ Recent Activities — keys resolved by | translate -->
+<section class="section recent-activities">
+  <div class="container">
+    <div class="section-header d-flex-between">
+      <div>
+        <h2 class="section-title">
+          {{ 'RECENT.TITLE_1' | translate }}
+          <span class="text-blue">{{ 'RECENT.TITLE_2' | translate }}</span>
+        </h2>
+        <p class="section-desc mb-0">{{ 'RECENT.SUBTITLE' | translate }}</p>
+      </div>
+      <a routerLink="/activities" class="btn-secondary hidden-mobile">
+        {{ 'RECENT.VIEW_ALL' | translate }}
+        <lucide-icon [img]="ArrowRight" size="16"></lucide-icon>
+      </a>
+    </div>
+
+    <div class="events-grid">
+      @for (event of recentEvents; track event.titleKey) {
+        <div class="event-mini-card">
+          <div class="event-mini-image"></div>
+          <div class="event-mini-content">
+            <span class="event-mini-type">{{ event.typeKey | translate }}</span>
+            <h4 class="event-mini-title">{{ event.titleKey | translate }}</h4>
+            <span class="event-mini-date">{{ event.dateKey | translate }}</span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="mobile-cta-row">
+      <a routerLink="/activities" class="btn-secondary full-width">
+        {{ 'RECENT.VIEW_ALL' | translate }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ④ Testimonials — keys resolved by | translate -->
+<section class="section testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        {{ 'TESTIMONIALS.TITLE_1' | translate }}
+        <span class="text-blue">{{ 'TESTIMONIALS.TITLE_2' | translate }}</span>
+      </h2>
+    </div>
+    <div class="testimonials-grid">
+      @for (t of testimonials; track t.authorKey) {
+        <div class="testimonial-card">
+          <lucide-icon [img]="Quote" size="32" class="quote-icon"></lucide-icon>
+          <p class="testimonial-text">"{{ t.textKey | translate }}"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"></div>
+            <div>
+              <h4 class="author-name">{{ t.authorKey | translate }}</h4>
+              <span class="author-role">{{ t.roleKey | translate }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ Partners Strip -->
+<section class="section partners-section">
+  <div class="container text-center">
+    <h3 class="partners-title">{{ 'PARTNERS_STRIP.TITLE' | translate }}</h3>
+    <div class="partners-logo-grid">
+      <div class="partner-logo-placeholder">Partner 1</div>
+      <div class="partner-logo-placeholder">Partner 2</div>
+      <div class="partner-logo-placeholder">Partner 3</div>
+      <div class="partner-logo-placeholder">Partner 4</div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ Final CTA -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <div class="cta-bg-effect"></div>
+      <div class="cta-content">
+        <h2 class="cta-title">{{ 'CTA.TITLE' | translate }}</h2>
+        <p class="cta-desc">{{ 'CTA.DESC' | translate }}</p>
+        <div class="cta-actions">
+          <button class="btn-primary">{{ 'CTA.BTN_MEMBER' | translate }}</button>
+          <a routerLink="/partners" class="btn-secondary-light">
+            {{ 'CTA.BTN_SPONSOR' | translate }}
+            <lucide-icon [img]="Handshake" size="18"></lucide-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,88 @@
+<section class="hero-section">
+  <div class="hero-bg">
+    <div class="grid-overlay"></div>
+    <div class="radial-gradient"></div>
+  </div>
+
+  <div class="container hero-layout">
+
+    <!-- LEFT: Text -->
+    <div class="hero-text-side">
+      <div class="badge">{{ 'HERO.BADGE' | translate }}</div>
+
+      <h1 #heroTitle class="hero-title">
+        {{ 'HERO.TITLE_PART_1' | translate }}<span class="highlight">{{ 'HERO.TITLE_SCIENCE' | translate }}</span>{{ 'HERO.TITLE_PART_2' | translate }}
+      </h1>
+
+      <p #heroSubtitle class="hero-subtitle">
+        {{ 'HERO.SUBTITLE' | translate }}
+      </p>
+
+      <div #heroCta class="hero-actions">
+        <a routerLink="/activities" class="btn-primary-large">
+          {{ 'HERO.BTN_EVENTS' | translate }}
+          <lucide-icon [img]="ArrowRight" size="20"></lucide-icon>
+        </a>
+        <a routerLink="/partners" class="btn-secondary">
+          {{ 'HERO.BTN_PARTNER' | translate }}
+        </a>
+      </div>
+
+      <div #heroStats class="stats-row">
+        <div class="stat-item">
+          <span class="stat-number">2+</span>
+          <span class="stat-label">{{ 'HERO.STAT_ENTITIES' | translate }}</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">{{ 'HERO.STAT_MEMBERS' | translate }}</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">{{ 'HERO.STAT_EVENTS' | translate }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Optical Visual -->
+    <div #heroVisual class="hero-visual-side">
+      <div class="optic-scene">
+
+        <!-- Circular viewport with rotating optics image inside -->
+        <div class="lens-viewport">
+          <img #opticsImg
+               src="assets/optics-bg.png"
+               alt="Photonics optical art"
+               class="optics-bg-img">
+          <!-- Vignette overlay to blend edges -->
+          <div class="lens-vignette"></div>
+        </div>
+
+        <!-- Decorative outer frame (counter-rotates) -->
+        <div #lensFrame class="lens-frame">
+          <div class="frame-tick tick-top"></div>
+          <div class="frame-tick tick-right"></div>
+          <div class="frame-tick tick-bottom"></div>
+          <div class="frame-tick tick-left"></div>
+        </div>
+
+        <!-- Center glow -->
+        <div class="lens-glow"></div>
+
+        <!-- Light rays emanating from center -->
+        @for (angle of rays; track angle) {
+          <div class="light-ray" [style.transform]="'rotate(' + angle + 'deg)'"></div>
+        }
+
+        <!-- Orbiting photon particles -->
+        <div class="photon photon-1"></div>
+        <div class="photon photon-2"></div>
+        <div class="photon photon-3"></div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

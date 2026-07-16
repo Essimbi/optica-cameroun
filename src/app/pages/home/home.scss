@@ -1,0 +1,460 @@
+@use '../../../styles/variables' as *;
+
+.section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+  
+  &.d-flex-between {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 100%;
+    gap: 1.5rem;
+    
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+}
+
+.section-title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  
+  .text-blue {
+    color: $accent-blue;
+  }
+}
+
+.section-desc {
+  color: $text-muted;
+  font-size: 1.125rem;
+  
+  &.mb-0 {
+    margin-bottom: 0;
+  }
+}
+
+/* =========================================
+   NEXT EVENT HIGHLIGHT
+   ========================================= */
+.highlight-section {
+  padding-top: 2rem;
+  margin-top: -4rem; /* Overlap hero slightly */
+  position: relative;
+  z-index: 20;
+}
+
+.highlight-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: $bg-surface;
+  border-radius: $radius-lg;
+  border: 1px solid rgba($accent-blue, 0.3);
+  overflow: hidden;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+  
+  @media (min-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.highlight-content {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.highlight-badge {
+  background-color: rgba($accent-blue, 0.1);
+  color: $accent-blue;
+  padding: 0.5rem 1rem;
+  border-radius: $radius-full;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba($accent-blue, 0.2);
+}
+
+.highlight-title {
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.highlight-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  color: $text-light;
+  
+  @media (min-width: 576px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  
+  lucide-icon {
+    color: $accent-blue;
+  }
+}
+
+.highlight-desc {
+  color: $text-muted;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.highlight-image {
+  min-height: 300px;
+  background-color: #1a1a1a;
+  
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #111111 0%, #1a365d 100%);
+    position: relative;
+    overflow: hidden;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at center, transparent 30%, $bg-surface 100%);
+    }
+  }
+}
+
+/* =========================================
+   ECOSYSTEM SPLIT GRID (Already done)
+   ========================================= */
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.info-card {
+  padding: 3rem;
+  border-radius: $radius-lg;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.dark-card {
+  background-color: $bg-surface;
+  border: $border-subtle;
+  
+  .card-icon { color: $accent-blue; }
+}
+
+.light-card {
+  background-color: #fff;
+  color: $bg-dark;
+  
+  .card-icon { color: $accent-blue; }
+}
+
+.card-icon { margin-bottom: 1.5rem; }
+.card-title {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  &.text-dark { color: $bg-dark; }
+}
+.card-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: $text-muted;
+  &.text-dark-muted { color: #4B5563; }
+}
+.feature-list {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  
+  li {
+    position: relative; padding-left: 1.5rem; font-weight: 500;
+    &::before { content: '→'; position: absolute; left: 0; color: $accent-blue; }
+  }
+  &.dark-text li { color: $bg-dark; }
+}
+
+/* =========================================
+   RECENT ACTIVITIES
+   ========================================= */
+.recent-activities {
+  background-color: $bg-surface-light;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.event-mini-card {
+  background-color: $bg-dark;
+  border-radius: $radius-md;
+  overflow: hidden;
+  border: $border-subtle;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba($accent-blue, 0.4);
+  }
+}
+
+.event-mini-image {
+  height: 160px;
+  background: linear-gradient(45deg, #111, #222);
+}
+
+.event-mini-content {
+  padding: 1.5rem;
+}
+
+.event-mini-type {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: $accent-blue;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.event-mini-title {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.event-mini-date {
+  font-size: 0.875rem;
+  color: $text-muted;
+}
+
+.hidden-mobile {
+  display: none;
+  @media (min-width: 768px) { display: flex; }
+}
+
+.mobile-cta-row {
+  margin-top: 2rem;
+  @media (min-width: 768px) { display: none; }
+}
+
+/* =========================================
+   TESTIMONIALS
+   ========================================= */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.testimonial-card {
+  background-color: $bg-surface;
+  padding: 2.5rem;
+  border-radius: $radius-lg;
+  border: $border-subtle;
+  position: relative;
+}
+
+.quote-icon {
+  color: rgba($accent-blue, 0.2);
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+}
+
+.testimonial-text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: $text-light;
+  margin-bottom: 2rem;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.author-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: $accent-blue;
+  background-image: linear-gradient(45deg, $accent-blue, #fff);
+}
+
+.author-name {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.author-role {
+  font-size: 0.875rem;
+  color: $text-muted;
+}
+
+/* =========================================
+   PARTNERS
+   ========================================= */
+.partners-section {
+  padding: 4rem 0;
+  border-top: $border-subtle;
+}
+
+.partners-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: $text-muted;
+  margin-bottom: 3rem;
+}
+
+.partners-logo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  opacity: 0.6;
+  
+  @media (min-width: 768px) { gap: 5rem; }
+}
+
+.partner-logo-placeholder {
+  font-family: $font-display;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $text-muted;
+}
+
+/* =========================================
+   FINAL CTA
+   ========================================= */
+.cta-box {
+  background: linear-gradient(135deg, $bg-surface 0%, #102a43 100%);
+  border-radius: $radius-lg;
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba($accent-blue, 0.2);
+  
+  @media (min-width: 768px) { padding: 5rem; }
+}
+
+.cta-bg-effect {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at top right, rgba($accent-blue, 0.2) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  
+  @media (min-width: 768px) { font-size: 3rem; }
+}
+
+.cta-desc {
+  font-size: 1.125rem;
+  color: $text-light;
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+}
+
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  
+  @media (min-width: 576px) {
+    flex-direction: row;
+  }
+}
+
+/* Utility buttons */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background-color: $accent-blue; color: #fff; padding: 0.75rem 1.5rem;
+  border-radius: $radius-md; font-family: $font-display; font-weight: 600;
+  font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px;
+  transition: all 0.3s ease; border: none; cursor: pointer;
+  
+  &:hover { background-color: $accent-blue-hover; transform: translateY(-2px); }
+}
+
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background: transparent; color: $text-light; padding: 0.75rem 1.5rem;
+  border-radius: $radius-md; font-family: $font-display; font-weight: 600;
+  font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px;
+  transition: all 0.3s ease; border: $border-subtle; cursor: pointer;
+  
+  &:hover { background-color: rgba(255,255,255,0.05); color: #fff; }
+}
+
+.btn-secondary-light {
+  @extend .btn-secondary;
+  border-color: rgba(255,255,255,0.3);
+  &:hover { border-color: #fff; }
+}
+.full-width { width: 100%; }
+.text-center { text-align: center; }

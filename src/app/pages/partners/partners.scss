@@ -1,0 +1,372 @@
+@use '../../../styles/variables' as *;
+
+.page-header {
+  position: relative;
+  padding: 6rem 0 4rem;
+  background-color: $bg-surface;
+  border-bottom: $border-subtle;
+  overflow: hidden;
+
+  .grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 0;
+  }
+  .container { position: relative; z-index: 1; }
+}
+
+.page-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  .text-blue { color: $accent-blue; }
+}
+.page-subtitle {
+  font-size: 1.25rem;
+  color: $text-muted;
+  max-width: 600px;
+}
+
+/* ── Sections ────────────────────────────────── */
+.section { padding: 6rem 0; }
+
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 4rem;
+}
+.section-title {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+.section-desc {
+  color: $text-muted;
+  font-size: 1.125rem;
+}
+
+/* ── Impact Stats ────────────────────────────── */
+.impact-section { background-color: $bg-surface-light; }
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+
+  @media (min-width: 768px) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.impact-card {
+  background-color: $bg-dark;
+  border: $border-subtle;
+  border-radius: $radius-lg;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+
+  &:hover { transform: translateY(-4px); border-color: rgba($accent-blue, 0.4); }
+}
+
+.impact-icon {
+  color: $accent-blue;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.impact-number {
+  font-family: $font-display;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.impact-label {
+  font-size: 0.875rem;
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.why-reasons {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.reason-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: $bg-dark;
+  border: $border-subtle;
+  border-radius: $radius-md;
+  padding: 1.25rem 1.5rem;
+
+  p { margin: 0; color: $text-light; line-height: 1.6; }
+}
+.reason-icon { color: $accent-blue; flex-shrink: 0; margin-top: 2px; }
+
+/* ── Tiers ───────────────────────────────────── */
+.tiers-section { background-color: $bg-dark; }
+
+.tiers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media (min-width: 768px) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.tier-card {
+  border-radius: $radius-lg;
+  padding: 2.5rem;
+  border: 1px solid;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover { transform: translateY(-6px); }
+}
+
+.tier-bronze {
+  background: linear-gradient(135deg, #1a1208, #0d0d0d);
+  border-color: rgba(205, 127, 50, 0.4);
+  .tier-header lucide-icon, .tier-amount { color: #CD7F32; }
+}
+.tier-silver {
+  background: linear-gradient(135deg, #111418, #0d0d0d);
+  border-color: rgba(192, 192, 192, 0.4);
+  .tier-header lucide-icon, .tier-amount { color: #C0C0C0; }
+}
+.tier-gold {
+  background: linear-gradient(135deg, #171200, #0d0d0d);
+  border-color: rgba(255, 215, 0, 0.5);
+  .tier-header lucide-icon, .tier-amount { color: #FFD700; }
+  position: relative;
+  &::before {
+    content: 'Most Popular';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFD700;
+    color: $bg-dark;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.25rem 0.75rem;
+    border-radius: $radius-full;
+  }
+}
+
+.tier-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.tier-name {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.tier-amount {
+  font-family: $font-display;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.tier-desc {
+  color: $text-muted;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.tier-perks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex-grow: 1;
+
+  li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: $text-light;
+    font-size: 0.9375rem;
+    &::before { content: '✓'; position: absolute; left: 0; color: $accent-blue; font-weight: 700; }
+  }
+}
+.tier-cta {
+  display: block;
+  text-align: center;
+  padding: 0.875rem;
+  border-radius: $radius-md;
+  background-color: rgba(255,255,255,0.05);
+  border: $border-subtle;
+  color: $text-light;
+  font-family: $font-display;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+
+  &:hover { background-color: $accent-blue; border-color: $accent-blue; color: #fff; }
+}
+
+/* ── Current Partners strip ─────────────────── */
+.current-partners-section {
+  background-color: $bg-surface;
+  padding: 4rem 0;
+}
+.partners-strip-title {
+  font-size: 0.9375rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: $text-muted;
+  margin-bottom: 2.5rem;
+  font-family: $font-sans;
+}
+.logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  opacity: 0.5;
+}
+.logo-placeholder {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $text-muted;
+}
+.text-center { text-align: center; }
+
+/* ── Contact Form ────────────────────────────── */
+.form-section { background-color: $bg-dark; }
+
+.form-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.form-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.form-icon { color: $accent-blue; margin: 0 auto 1.5rem; display: flex; justify-content: center; }
+.form-title { font-size: 2rem; margin-bottom: 1rem; }
+.form-desc { color: $text-muted; font-size: 1.0625rem; }
+
+.partner-form { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  @media (min-width: 640px) { grid-template-columns: 1fr 1fr; }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $text-light;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input, select, textarea {
+    background-color: $bg-surface;
+    border: $border-subtle;
+    border-radius: $radius-md;
+    color: $text-light;
+    padding: 0.875rem 1rem;
+    font-family: $font-sans;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+
+    &::placeholder { color: rgba($text-muted, 0.6); }
+    &:focus { border-color: $accent-blue; box-shadow: 0 0 0 3px rgba($accent-blue, 0.1); }
+  }
+
+  textarea { resize: vertical; min-height: 120px; }
+
+  select option {
+    background-color: $bg-surface;
+    color: $text-light;
+  }
+}
+
+.field-error {
+  font-size: 0.8125rem;
+  color: #f87171;
+}
+
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: $accent-blue;
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: $radius-md;
+  font-family: $font-display;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+
+  &:hover { background-color: $accent-blue-hover; transform: translateY(-2px); box-shadow: 0 8px 20px rgba($accent-blue, 0.3); }
+}
+
+.form-success {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: $bg-surface;
+  border-radius: $radius-lg;
+  border: 1px solid rgba($accent-blue, 0.3);
+
+  .success-icon {
+    color: $accent-blue;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  h3 { font-size: 1.75rem; margin-bottom: 1rem; }
+  p { color: $text-muted; margin-bottom: 2rem; }
+}
+
+.btn-secondary {
+  background: transparent;
+  border: $border-subtle;
+  color: $text-light;
+  padding: 0.75rem 1.5rem;
+  border-radius: $radius-md;
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover { background-color: rgba(255,255,255,0.05); color: #fff; }
+}

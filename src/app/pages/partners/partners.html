@@ -1,0 +1,170 @@
+<!-- ① Page Header -->
+<section class="page-header">
+  <div class="grid-overlay"></div>
+  <div class="container">
+    <h1 class="page-title">{{ 'PARTNERS.TITLE_1' | translate }} <span class="text-blue">{{ 'PARTNERS.TITLE_2' | translate }}</span></h1>
+    <p class="page-subtitle">{{ 'PARTNERS.SUBTITLE' | translate }}</p>
+  </div>
+</section>
+
+<!-- ② Why Support Us — Impact Stats -->
+<section class="section impact-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'PARTNERS.IMPACT_TITLE' | translate }}</h2>
+      <p class="section-desc">{{ 'PARTNERS.IMPACT_DESC' | translate }}</p>
+    </div>
+
+    <div class="impact-grid">
+      @for (stat of impactStats; track stat.valueKey) {
+        <div class="impact-card">
+          <div class="impact-icon">
+            <lucide-icon [img]="icons[stat.icon]" size="28"></lucide-icon>
+          </div>
+          <div class="impact-number">{{ stat.valueKey | translate }}</div>
+          <div class="impact-label">{{ stat.labelKey | translate }}</div>
+        </div>
+      }
+    </div>
+
+    <div class="why-reasons">
+      <div class="reason-item">
+        <lucide-icon [img]="ChevronRight" size="20" class="reason-icon"></lucide-icon>
+        <p>{{ 'PARTNERS.REASON_1' | translate }}</p>
+      </div>
+      <div class="reason-item">
+        <lucide-icon [img]="ChevronRight" size="20" class="reason-icon"></lucide-icon>
+        <p>{{ 'PARTNERS.REASON_2' | translate }}</p>
+      </div>
+      <div class="reason-item">
+        <lucide-icon [img]="ChevronRight" size="20" class="reason-icon"></lucide-icon>
+        <p>{{ 'PARTNERS.REASON_3' | translate }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ Partnership Tiers -->
+<section class="section tiers-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'PARTNERS.TIERS_TITLE' | translate }}</h2>
+      <p class="section-desc">{{ 'PARTNERS.TIERS_DESC' | translate }}</p>
+    </div>
+
+    <div class="tiers-grid">
+      @for (tier of tiers; track tier.key) {
+        <div class="tier-card" [class]="tier.colorClass">
+          <div class="tier-header">
+            <lucide-icon [img]="HandCoins" size="24"></lucide-icon>
+            <h3 class="tier-name">{{ 'PARTNERS.TIER_' + tier.key.toUpperCase() + '_NAME' | translate }}</h3>
+          </div>
+          <div class="tier-amount">{{ 'PARTNERS.TIER_' + tier.key.toUpperCase() + '_AMOUNT' | translate }}</div>
+          <p class="tier-desc">{{ 'PARTNERS.TIER_' + tier.key.toUpperCase() + '_DESC' | translate }}</p>
+          <ul class="tier-perks">
+            <li>{{ 'PARTNERS.TIER_' + tier.key.toUpperCase() + '_PERK_1' | translate }}</li>
+            <li>{{ 'PARTNERS.TIER_' + tier.key.toUpperCase() + '_PERK_2' | translate }}</li>
+            <li>{{ 'PARTNERS.TIER_' + tier.key.toUpperCase() + '_PERK_3' | translate }}</li>
+          </ul>
+          <a href="#partner-form" class="tier-cta">{{ 'PARTNERS.TIER_CTA' | translate }}</a>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ④ Current Partners logos -->
+<section class="section current-partners-section">
+  <div class="container text-center">
+    <h3 class="partners-strip-title">{{ 'PARTNERS.CURRENT_TITLE' | translate }}</h3>
+    <div class="logos-grid">
+      <div class="logo-placeholder">Partner A</div>
+      <div class="logo-placeholder">Partner B</div>
+      <div class="logo-placeholder">Partner C</div>
+      <div class="logo-placeholder">Partner D</div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ Contact Form -->
+<section id="partner-form" class="section form-section">
+  <div class="container">
+    <div class="form-wrapper">
+      <div class="form-intro">
+        <lucide-icon [img]="Mail" size="40" class="form-icon"></lucide-icon>
+        <h2 class="form-title">{{ 'PARTNERS.FORM_TITLE' | translate }}</h2>
+        <p class="form-desc">{{ 'PARTNERS.FORM_DESC' | translate }}</p>
+      </div>
+
+      @if (formSubmitted()) {
+        <div class="form-success">
+          <div class="success-icon">
+            <lucide-icon [img]="Award" size="40"></lucide-icon>
+          </div>
+          <h3>{{ 'PARTNERS.FORM_SUCCESS_TITLE' | translate }}</h3>
+          <p>{{ 'PARTNERS.FORM_SUCCESS_DESC' | translate }}</p>
+          <button class="btn-secondary" (click)="resetForm()">{{ 'PARTNERS.FORM_RESET' | translate }}</button>
+        </div>
+      } @else {
+        <form [formGroup]="partnerForm" (ngSubmit)="onSubmit()" class="partner-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label>{{ 'PARTNERS.FIELD_ORG' | translate }}</label>
+              <input type="text" formControlName="orgName" [placeholder]="'PARTNERS.FIELD_ORG_PH' | translate">
+              @if (partnerForm.get('orgName')?.invalid && partnerForm.get('orgName')?.touched) {
+                <span class="field-error">{{ 'PARTNERS.FIELD_REQUIRED' | translate }}</span>
+              }
+            </div>
+            <div class="form-field">
+              <label>{{ 'PARTNERS.FIELD_CONTACT' | translate }}</label>
+              <input type="text" formControlName="contact" [placeholder]="'PARTNERS.FIELD_CONTACT_PH' | translate">
+              @if (partnerForm.get('contact')?.invalid && partnerForm.get('contact')?.touched) {
+                <span class="field-error">{{ 'PARTNERS.FIELD_REQUIRED' | translate }}</span>
+              }
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label>{{ 'PARTNERS.FIELD_EMAIL' | translate }}</label>
+              <input type="email" formControlName="email" [placeholder]="'PARTNERS.FIELD_EMAIL_PH' | translate">
+              @if (partnerForm.get('email')?.invalid && partnerForm.get('email')?.touched) {
+                <span class="field-error">{{ 'PARTNERS.FIELD_EMAIL_INVALID' | translate }}</span>
+              }
+            </div>
+            <div class="form-field">
+              <label>{{ 'PARTNERS.FIELD_PHONE' | translate }}</label>
+              <input type="tel" formControlName="phone" [placeholder]="'PARTNERS.FIELD_PHONE_PH' | translate">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>{{ 'PARTNERS.FIELD_TIER' | translate }}</label>
+            <select formControlName="tier">
+              <option value="">{{ 'PARTNERS.FIELD_TIER_PH' | translate }}</option>
+              <option value="bronze">{{ 'PARTNERS.TIER_BRONZE_NAME' | translate }}</option>
+              <option value="silver">{{ 'PARTNERS.TIER_SILVER_NAME' | translate }}</option>
+              <option value="gold">{{ 'PARTNERS.TIER_GOLD_NAME' | translate }}</option>
+            </select>
+            @if (partnerForm.get('tier')?.invalid && partnerForm.get('tier')?.touched) {
+              <span class="field-error">{{ 'PARTNERS.FIELD_REQUIRED' | translate }}</span>
+            }
+          </div>
+
+          <div class="form-field">
+            <label>{{ 'PARTNERS.FIELD_MESSAGE' | translate }}</label>
+            <textarea formControlName="message" rows="5" [placeholder]="'PARTNERS.FIELD_MESSAGE_PH' | translate"></textarea>
+            @if (partnerForm.get('message')?.invalid && partnerForm.get('message')?.touched) {
+              <span class="field-error">{{ 'PARTNERS.FIELD_MESSAGE_MIN' | translate }}</span>
+            }
+          </div>
+
+          <button type="submit" class="btn-submit">
+            {{ 'PARTNERS.FORM_SUBMIT' | translate }}
+            <lucide-icon [img]="ChevronRight" size="18"></lucide-icon>
+          </button>
+        </form>
+      }
+    </div>
+  </div>
+</section>
