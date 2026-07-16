@@ -18,12 +18,12 @@
     "STAT_EVENTS": "Événements par an"
   },
   "HIGHLIGHT": {
-    "BADGE": "Prochain Événement Majeur",
-    "BTN_REGISTER": "S'inscrire",
-    "EVENT_TITLE": "Sommet Leadership Photonique 2026",
-    "EVENT_DATE": "15 août 2026",
-    "EVENT_LOCATION": "Centre de Conférences de Yaoundé",
-    "EVENT_DESC": "Rejoignez des leaders industriels et des chercheurs de premier plan pour discuter de l'avenir de la photonique en Afrique centrale."
+    "BADGE": "Prochaine Conférence Majeure",
+    "BTN_REGISTER": "Voir le Programme",
+    "EVENT_TITLE": "Frontières en Photonique, Lumière Structurée & Communications Optiques 2026",
+    "EVENT_DATE": "03–05 Septembre 2026",
+    "EVENT_LOCATION": "ENSPY, Yaoundé, Cameroun",
+    "EVENT_DESC": "Rejoignez le Prof. Kumar Vijay Mishra et des chercheurs de premier plan pour FPSLOC 2026. Une conférence de 3 jours sur la photonique appliquée, l'optique non linéaire, l'IA et des sessions posters pour étudiants."
   },
   "ECOSYSTEM": {
     "TITLE_1": "Un Écosystème.",
