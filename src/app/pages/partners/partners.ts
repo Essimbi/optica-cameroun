@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+
 import { LucideAngularModule, TrendingUp, Users, Calendar, Award, Mail, Building2, HandCoins, ChevronRight } from 'lucide-angular';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,7 +7,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 @Component({
   selector: 'app-partners',
   standalone: true,
-  imports: [RouterLink, LucideAngularModule, TranslatePipe, ReactiveFormsModule],
+  imports: [LucideAngularModule, TranslatePipe, ReactiveFormsModule],
   templateUrl: './partners.html',
   styleUrl: './partners.scss'
 })

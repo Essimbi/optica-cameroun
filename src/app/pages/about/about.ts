@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+
 import { LucideAngularModule, Users, Target, Globe, BookOpen, Award, Microscope, ChevronRight } from 'lucide-angular';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [RouterLink, LucideAngularModule, TranslatePipe],
+  imports: [LucideAngularModule, TranslatePipe],
   templateUrl: './about.html',
   styleUrl: './about.scss'
 })

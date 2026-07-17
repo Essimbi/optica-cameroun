@@ -1,7 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule, Calendar, MapPin, ArrowRight, Image as ImageIcon } from 'lucide-angular';
-import { RouterLink } from '@angular/router';
+
 import { TranslatePipe } from '@ngx-translate/core';
 
 // Internal model using i18n keys for translatable fields
@@ -18,7 +18,7 @@ interface OpticaEventI18n {
 @Component({
   selector: 'app-activities',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule, RouterLink, TranslatePipe],
+  imports: [CommonModule, LucideAngularModule, TranslatePipe],
   templateUrl: './activities.html',
   styleUrl: './activities.scss'
 })
