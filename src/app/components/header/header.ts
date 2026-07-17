@@ -1,7 +1,8 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, OnInit, computed } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideAngularModule, Menu, X, Globe, ChevronDown } from 'lucide-angular';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-header',
@@ -10,20 +11,26 @@ import { TranslateService, TranslatePipe } from '@ngx-translate/core';
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
-export class Header {
+export class Header implements OnInit {
   readonly Menu = Menu;
   readonly X = X;
   readonly Globe = Globe;
   readonly ChevronDown = ChevronDown;
 
   private translate = inject(TranslateService);
+  private translationService = inject(TranslationService);
 
   isMobileMenuOpen = signal(false);
-  currentLang = signal('EN');
   isLangMenuOpen = signal(false);
+  
+  // Utiliser le signal de la langue actuelle depuis ngx-translate
+  currentLang = computed(() => {
+    const lang = this.translate.getCurrentLang();
+    return lang ? lang.toUpperCase() : 'EN';
+  });
 
-  constructor() {
-    this.translate.use('en');
+  ngOnInit() {
+    // L'initialisation est gérée par le TranslationService
   }
 
   toggleMobileMenu() {
@@ -35,8 +42,7 @@ export class Header {
   }
 
   setLang(lang: string) {
-    this.currentLang.set(lang);
-    this.translate.use(lang.toLowerCase());
+    this.translationService.setLanguage(lang.toLowerCase());
     this.isLangMenuOpen.set(false);
   }
 }

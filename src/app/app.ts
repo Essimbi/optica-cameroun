@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
+import { TranslationService } from './services/translation.service';
 
 @Component({
   selector: 'app-root',
@@ -21,4 +22,8 @@ import { Footer } from './components/footer/footer';
 })
 export class App {
   title = 'optica';
+  
+  constructor(private translationService: TranslationService) {
+    // Le service s'initialise automatiquement
+  }
 }

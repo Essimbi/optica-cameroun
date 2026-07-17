@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { CodeOfConduct } from '../../components/code-of-conduct/code-of-conduct';
 
 import { LucideAngularModule, Users, Target, Globe, BookOpen, Award, Microscope, ChevronRight } from 'lucide-angular';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -6,7 +8,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [LucideAngularModule, TranslatePipe],
+  imports: [CodeOfConduct, LucideAngularModule, RouterLink, TranslatePipe],
   templateUrl: './about.html',
   styleUrl: './about.scss'
 })

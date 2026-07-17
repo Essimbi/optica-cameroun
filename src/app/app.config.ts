@@ -13,10 +13,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
     provideAnimationsAsync(),
     provideHttpClient(),
-    provideTranslateService({
-      lang: 'en',
-      loader: provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' })[0] as any
-    }),
-    ...provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' })
+    provideTranslateService(),
+    ...provideTranslateHttpLoader({
+      prefix: './assets/i18n/',
+      suffix: '.json'
+    })
   ]
 };

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Hero } from '../../components/hero/hero';
+import { CodeOfConduct } from '../../components/code-of-conduct/code-of-conduct';
 import { LucideAngularModule, Calendar, Users, Target, ArrowRight, Quote, Handshake } from 'lucide-angular';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [Hero, LucideAngularModule, RouterLink, TranslatePipe],
+  imports: [Hero, CodeOfConduct, LucideAngularModule, RouterLink, TranslatePipe],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
