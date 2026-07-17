@@ -19,24 +19,14 @@
 }
 
 .logo {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
   margin-bottom: 1rem;
-  
-  .logo-text {
-    font-family: $font-display;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-  }
-  
-  .logo-subtext {
-    font-size: 0.875rem;
-    color: $accent-blue;
-    font-weight: 500;
-    text-transform: uppercase;
-  }
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .brand-desc {
