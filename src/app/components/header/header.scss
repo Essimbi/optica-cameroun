@@ -18,24 +18,14 @@
 
 .logo-link {
   display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  
-  .logo-text {
-    font-family: $font-display;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.5px;
-  }
-  
-  .logo-subtext {
-    font-size: 0.875rem;
-    color: $accent-blue;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+  align-items: center;
+}
+
+.logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .desktop-nav {
