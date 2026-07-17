@@ -1,0 +1,120 @@
+<!-- ① Header -->
+<section class="page-header">
+  <div class="grid-overlay"></div>
+  <div class="container">
+    <h1 class="page-title">{{ 'ABOUT.TITLE_1' | translate }} <span class="text-blue">{{ 'ABOUT.TITLE_2' | translate }}</span></h1>
+    <p class="page-subtitle">{{ 'ABOUT.SUBTITLE' | translate }}</p>
+  </div>
+</section>
+
+<!-- ② Mission -->
+<section class="section mission-section">
+  <div class="container mission-layout">
+    <div class="mission-text">
+      <span class="badge">{{ 'ABOUT.MISSION_BADGE' | translate }}</span>
+      <h2 class="section-title">{{ 'ABOUT.MISSION_TITLE' | translate }}</h2>
+      <p class="body-text">{{ 'ABOUT.MISSION_TEXT' | translate }}</p>
+      <p class="body-text">{{ 'ABOUT.MISSION_TEXT_2' | translate }}</p>
+    </div>
+    <div class="logo-block">
+      <img src="logo.jpg" alt="Optica Cameroon" class="about-logo">
+      <div class="affiliation-tags">
+        <span class="tag">Optica International</span>
+        <span class="tag">NASEY – Univ. Yaoundé I</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ Two Entities -->
+<section class="section entities-section">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">{{ 'ABOUT.ENTITIES_TITLE' | translate }}</h2>
+      <p class="section-desc">{{ 'ABOUT.ENTITIES_DESC' | translate }}</p>
+    </div>
+
+    <div class="entities-grid">
+      <!-- Local Section -->
+      <div class="entity-card section-card">
+        <div class="entity-icon">
+          <lucide-icon [img]="Target" size="36"></lucide-icon>
+        </div>
+        <h3>{{ 'ABOUT.ENTITY_SECTION_TITLE' | translate }}</h3>
+        <p>{{ 'ABOUT.ENTITY_SECTION_DESC' | translate }}</p>
+        <ul class="entity-list">
+          <li><lucide-icon [img]="ChevronRight" size="16"></lucide-icon>{{ 'ABOUT.ENTITY_SECTION_FEAT_1' | translate }}</li>
+          <li><lucide-icon [img]="ChevronRight" size="16"></lucide-icon>{{ 'ABOUT.ENTITY_SECTION_FEAT_2' | translate }}</li>
+          <li><lucide-icon [img]="ChevronRight" size="16"></lucide-icon>{{ 'ABOUT.ENTITY_SECTION_FEAT_3' | translate }}</li>
+        </ul>
+      </div>
+
+      <!-- Student Chapter -->
+      <div class="entity-card chapter-card">
+        <div class="entity-icon text-blue">
+          <lucide-icon [img]="Users" size="36"></lucide-icon>
+        </div>
+        <h3>{{ 'ABOUT.ENTITY_CHAPTER_TITLE' | translate }}</h3>
+        <p>{{ 'ABOUT.ENTITY_CHAPTER_DESC' | translate }}</p>
+        <ul class="entity-list">
+          <li><lucide-icon [img]="ChevronRight" size="16"></lucide-icon>{{ 'ABOUT.ENTITY_CHAPTER_FEAT_1' | translate }}</li>
+          <li><lucide-icon [img]="ChevronRight" size="16"></lucide-icon>{{ 'ABOUT.ENTITY_CHAPTER_FEAT_2' | translate }}</li>
+          <li><lucide-icon [img]="ChevronRight" size="16"></lucide-icon>{{ 'ABOUT.ENTITY_CHAPTER_FEAT_3' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ Values -->
+<section class="section values-section">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">{{ 'ABOUT.VALUES_TITLE' | translate }}</h2>
+    </div>
+    <div class="values-grid">
+      @for (v of values; track v.titleKey) {
+        <div class="value-card">
+          <div class="value-icon">
+            <lucide-icon [img]="icons[v.icon]" size="28"></lucide-icon>
+          </div>
+          <h3>{{ v.titleKey | translate }}</h3>
+          <p>{{ v.descKey | translate }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ Timeline -->
+<section class="section timeline-section">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">{{ 'ABOUT.TIMELINE_TITLE' | translate }}</h2>
+    </div>
+    <div class="timeline">
+      @for (m of milestones; track m.year) {
+        <div class="timeline-item">
+          <div class="timeline-year">{{ m.year }}</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-label">{{ m.labelKey | translate }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ Affiliation -->
+<section class="section affiliation-section">
+  <div class="container">
+    <div class="affiliation-box">
+      <lucide-icon [img]="Globe" size="40" class="affil-icon"></lucide-icon>
+      <h2>{{ 'ABOUT.AFFIL_TITLE' | translate }}</h2>
+      <p>{{ 'ABOUT.AFFIL_DESC' | translate }}</p>
+      <a href="https://www.optica.org" target="_blank" rel="noopener" class="btn-primary">
+        Optica International
+        <lucide-icon [img]="ChevronRight" size="18"></lucide-icon>
+      </a>
+    </div>
+  </div>
+</section>

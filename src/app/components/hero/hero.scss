@@ -48,8 +48,8 @@
   grid-template-columns: 1fr;
   gap: 3rem;
   align-items: center;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: clamp(3rem, 8vw, 5rem);
+  padding-bottom: clamp(3rem, 8vw, 5rem);
 
   @media (min-width: 992px) {
     grid-template-columns: 1fr 1fr;
@@ -92,7 +92,7 @@
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw + 1rem, 3rem);
   line-height: 1.08;
   letter-spacing: -1.5px;
   margin-bottom: 1.5rem;
@@ -208,8 +208,8 @@
 
 .optic-scene {
   position: relative;
-  width: 380px;
-  height: 380px;
+  width: min(85vw, 380px);
+  height: min(85vw, 380px);
   display: flex;
   align-items: center;
   justify-content: center;

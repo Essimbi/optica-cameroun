@@ -1,0 +1,52 @@
+<!-- ① Header -->
+<section class="page-header">
+  <div class="grid-overlay"></div>
+  <div class="container">
+    <h1 class="page-title">{{ 'RESOURCES.TITLE_1' | translate }} <span class="text-blue">{{ 'RESOURCES.TITLE_2' | translate }}</span></h1>
+    <p class="page-subtitle">{{ 'RESOURCES.SUBTITLE' | translate }}</p>
+  </div>
+</section>
+
+<!-- ② Categories -->
+<section class="section">
+  <div class="container">
+    <div class="resources-grid">
+      @for (cat of categories; track cat.titleKey) {
+        <div class="resource-card">
+          <div class="resource-icon">
+            <lucide-icon [img]="icons[cat.icon]" size="28"></lucide-icon>
+          </div>
+          <h3 class="resource-title">{{ cat.titleKey | translate }}</h3>
+          <p class="resource-desc">{{ cat.descKey | translate }}</p>
+          <ul class="resource-links">
+            @for (link of cat.links; track link.url) {
+              <li>
+                <a [href]="link.url" target="_blank" rel="noopener">
+                  {{ link.labelKey | translate }}
+                  <lucide-icon [img]="ExternalLink" size="14"></lucide-icon>
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ③ CTA -->
+<section class="section cta-strip">
+  <div class="container">
+    <div class="cta-box">
+      <lucide-icon [img]="BookOpen" size="36" class="cta-icon"></lucide-icon>
+      <div>
+        <h3>{{ 'RESOURCES.CTA_TITLE' | translate }}</h3>
+        <p>{{ 'RESOURCES.CTA_DESC' | translate }}</p>
+      </div>
+      <a href="https://opg.optica.org" target="_blank" rel="noopener" class="btn-primary">
+        Optica Publishing Group
+        <lucide-icon [img]="ExternalLink" size="16"></lucide-icon>
+      </a>
+    </div>
+  </div>
+</section>

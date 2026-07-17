@@ -1,0 +1,45 @@
+@use '../../../styles/variables' as *;
+
+.page-header {
+  position: relative; padding: clamp(4rem, 10vw, 6rem) 0 clamp(2rem, 5vw, 4rem);
+  background-color: $bg-surface; border-bottom: $border-subtle; overflow: hidden;
+  .grid-overlay {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  .container { position: relative; z-index: 1; }
+}
+.page-title { font-size: clamp(2rem, 5vw + 1rem, 3rem); margin-bottom: 1rem; }
+.page-subtitle { font-size: 1.25rem; color: $text-muted; max-width: 600px; }
+.section { padding: clamp(3rem, 8vw, 5rem) 0; }
+
+.text-content {
+  max-width: 800px;
+  margin: 0 auto;
+  
+  h3 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  
+  p {
+    color: $text-muted;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  
+  ul {
+    color: $text-muted;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+  }
+}

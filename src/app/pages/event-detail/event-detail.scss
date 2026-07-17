@@ -62,7 +62,7 @@
   line-height: 1.2;
   margin-bottom: 1.5rem;
   
-  @media (min-width: 768px) { font-size: 3rem; }
+  @media (min-width: 768px) { font-size: clamp(2rem, 5vw + 1rem, 3rem); }
 }
 
 .event-meta {

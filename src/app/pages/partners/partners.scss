@@ -2,7 +2,7 @@
 
 .page-header {
   position: relative;
-  padding: 6rem 0 4rem;
+  padding: clamp(4rem, 10vw, 6rem) 0 clamp(2rem, 5vw, 4rem);
   background-color: $bg-surface;
   border-bottom: $border-subtle;
   overflow: hidden;
@@ -20,7 +20,7 @@
 }
 
 .page-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw + 1rem, 3rem);
   margin-bottom: 1rem;
   .text-blue { color: $accent-blue; }
 }
@@ -31,7 +31,7 @@
 }
 
 /* ── Sections ────────────────────────────────── */
-.section { padding: 6rem 0; }
+.section { padding: clamp(3rem, 8vw, 6rem) 0; }
 
 .section-header {
   text-align: center;

@@ -1,0 +1,86 @@
+<!-- ① Header -->
+<section class="page-header">
+  <div class="grid-overlay"></div>
+  <div class="container">
+    <h1 class="page-title">{{ 'CONTACT.TITLE_1' | translate }} <span class="text-blue">{{ 'CONTACT.TITLE_2' | translate }}</span></h1>
+    <p class="page-subtitle">{{ 'CONTACT.SUBTITLE' | translate }}</p>
+  </div>
+</section>
+
+<section class="section contact-body">
+  <div class="container">
+    <div class="contact-layout">
+      <!-- Left: Info -->
+      <div class="contact-info">
+        <h2 class="info-title">{{ 'CONTACT.INFO_TITLE' | translate }}</h2>
+        <p class="info-desc">{{ 'CONTACT.INFO_DESC' | translate }}</p>
+
+        <div class="info-items">
+          <div class="info-item">
+            <div class="info-icon"><lucide-icon [img]="MapPin" size="22"></lucide-icon></div>
+            <div>
+              <h4>{{ 'CONTACT.LOCATION_LABEL' | translate }}</h4>
+              <p>{{ 'CONTACT.LOCATION_VALUE' | translate }}</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><lucide-icon [img]="Mail" size="22"></lucide-icon></div>
+            <div>
+              <h4>{{ 'CONTACT.EMAIL_LABEL' | translate }}</h4>
+              <a href="mailto:contact@opticacameroon.org">contact&#64;opticacameroon.org</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><lucide-icon [img]="Phone" size="22"></lucide-icon></div>
+            <div>
+              <h4>{{ 'CONTACT.PHONE_LABEL' | translate }}</h4>
+              <p>{{ 'CONTACT.PHONE_VALUE' | translate }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="contact-form-col">
+        @if (submitted()) {
+          <div class="success-box">
+            <lucide-icon [img]="Send" size="40" class="success-icon"></lucide-icon>
+            <h3>{{ 'CONTACT.SUCCESS_TITLE' | translate }}</h3>
+            <p>{{ 'CONTACT.SUCCESS_DESC' | translate }}</p>
+          </div>
+        } @else {
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label>{{ 'CONTACT.FIELD_NAME' | translate }}</label>
+                <input type="text" formControlName="name">
+                @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
+                  <span class="field-error">{{ 'CONTACT.FIELD_REQUIRED' | translate }}</span>
+                }
+              </div>
+              <div class="form-field">
+                <label>{{ 'CONTACT.FIELD_EMAIL' | translate }}</label>
+                <input type="email" formControlName="email">
+                @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+                  <span class="field-error">{{ 'CONTACT.FIELD_EMAIL_INVALID' | translate }}</span>
+                }
+              </div>
+            </div>
+            <div class="form-field">
+              <label>{{ 'CONTACT.FIELD_SUBJECT' | translate }}</label>
+              <input type="text" formControlName="subject">
+            </div>
+            <div class="form-field">
+              <label>{{ 'CONTACT.FIELD_MESSAGE' | translate }}</label>
+              <textarea formControlName="message" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              {{ 'CONTACT.FIELD_SUBMIT' | translate }}
+              <lucide-icon [img]="ChevronRight" size="18"></lucide-icon>
+            </button>
+          </form>
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,79 @@
+@use '../../../styles/variables' as *;
+
+.page-header {
+  position: relative; padding: clamp(4rem, 10vw, 6rem) 0 clamp(2rem, 5vw, 4rem);
+  background-color: $bg-surface; border-bottom: $border-subtle; overflow: hidden;
+  .grid-overlay {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  .container { position: relative; z-index: 1; }
+}
+.page-title { font-size: clamp(2rem, 5vw + 1rem, 3rem); margin-bottom: 1rem; .text-blue { color: $accent-blue; } }
+.page-subtitle { font-size: 1.25rem; color: $text-muted; max-width: 600px; }
+
+.section { padding: clamp(3rem, 8vw, 5rem) 0; }
+
+/* ── Layout ───────────────────────────────────── */
+.contact-body { }
+.contact-layout {
+  display: grid; grid-template-columns: 1fr; gap: 4rem;
+  @media (min-width: 992px) { grid-template-columns: 1fr 1.4fr; align-items: flex-start; }
+}
+
+/* ── Info col ─────────────────────────────────── */
+.info-title { font-size: 2rem; margin-bottom: 1rem; }
+.info-desc { color: $text-muted; line-height: 1.7; margin-bottom: 2.5rem; font-size: 1.0625rem; }
+.info-items { display: flex; flex-direction: column; gap: 1.75rem; }
+.info-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  h4 { font-size: 1rem; margin-bottom: 0.25rem; color: $text-light; }
+  p, a { color: $text-muted; font-size: 0.9375rem; }
+  a:hover { color: $accent-blue; }
+}
+.info-icon {
+  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+  background: rgba($accent-blue, 0.1); border: 1px solid rgba($accent-blue, 0.2);
+  display: flex; align-items: center; justify-content: center; color: $accent-blue;
+}
+
+/* ── Form ─────────────────────────────────────── */
+.contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.form-row {
+  display: grid; grid-template-columns: 1fr; gap: 1.25rem;
+  @media (min-width: 640px) { grid-template-columns: 1fr 1fr; }
+}
+.form-field {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  label { font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: $text-light; }
+  input, textarea {
+    background: $bg-surface; border: $border-subtle; border-radius: $radius-md;
+    color: $text-light; padding: 0.875rem 1rem; font-family: $font-sans; font-size: 1rem;
+    outline: none; width: 100%; box-sizing: border-box; transition: border-color 0.2s;
+    &::placeholder { color: rgba($text-muted, 0.5); }
+    &:focus { border-color: $accent-blue; box-shadow: 0 0 0 3px rgba($accent-blue, 0.1); }
+  }
+  textarea { resize: vertical; }
+}
+.field-error { font-size: 0.8125rem; color: #f87171; }
+
+.btn-submit {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  background-color: $accent-blue; color: #fff; border: none;
+  padding: 1rem 2rem; border-radius: $radius-md;
+  font-family: $font-display; font-size: 1rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer;
+  transition: all 0.3s ease; align-self: flex-start;
+  &:hover { background-color: $accent-blue-hover; transform: translateY(-2px); }
+}
+
+.success-box {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  background: $bg-surface; border: 1px solid rgba($accent-blue, 0.3);
+  border-radius: $radius-lg; padding: 4rem 2rem; gap: 1rem;
+  h3 { font-size: 1.75rem; }
+  p { color: $text-muted; }
+}
+.success-icon { color: $accent-blue; }

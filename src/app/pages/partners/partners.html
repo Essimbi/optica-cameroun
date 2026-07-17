@@ -57,9 +57,8 @@
         <div class="tier-card" [class]="tier.colorClass">
           <div class="tier-header">
             <lucide-icon [img]="HandCoins" size="24"></lucide-icon>
-            <h3 class="tier-name">{{ 'PARTNERS.TIER_' + tier.key.toUpperCase() + '_NAME' | translate }}</h3>
+          <h3 class="tier-name">{{ 'PARTNERS.TIER_' + tier.key.toUpperCase() + '_NAME' | translate }}</h3>
           </div>
-          <div class="tier-amount">{{ 'PARTNERS.TIER_' + tier.key.toUpperCase() + '_AMOUNT' | translate }}</div>
           <p class="tier-desc">{{ 'PARTNERS.TIER_' + tier.key.toUpperCase() + '_DESC' | translate }}</p>
           <ul class="tier-perks">
             <li>{{ 'PARTNERS.TIER_' + tier.key.toUpperCase() + '_PERK_1' | translate }}</li>
