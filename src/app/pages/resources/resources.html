@@ -7,7 +7,147 @@
   </div>
 </section>
 
-<!-- ② Categories -->
+<!-- ③ Master Recherche -->
+<section id="local-research" class="section research-section alt-bg">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'RESOURCES.MASTER_RESEARCH_TITLE' | translate }} <span class="count-badge">09</span></h2>
+      <p class="section-desc">{{ 'RESOURCES.MASTER_RESEARCH_DESC' | translate }}</p>
+    </div>
+    <div class="student-grid">
+      @for (s of masterStudents; track s.nameKey) {
+        <div class="student-card" [class.defended]="s.status === 'soutenu'">
+          <div class="student-icon">
+            <lucide-icon [img]="GraduationCap" size="20"></lucide-icon>
+          </div>
+          <div class="student-content">
+            <div class="student-header">
+              <span class="student-name">{{ s.nameKey | translate }}</span>
+              @if (s.status === 'soutenu') {
+                <span class="status-badge status-defended">{{ 'RESOURCES.STATUS_DEFENDED' | translate }}</span>
+              }
+            </div>
+            <p class="student-thesis">{{ s.thesisKey | translate }}</p>
+            <span class="student-year">{{ 'RESOURCES.ACADEMIC_YEAR' | translate }} {{ s.yearKey | translate }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ④ Doctorats -->
+<section class="section research-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'RESOURCES.DOCTORAL_TITLE' | translate }} <span class="count-badge">03</span></h2>
+      <p class="section-desc">{{ 'RESOURCES.DOCTORAL_DESC' | translate }}</p>
+    </div>
+    <div class="student-grid">
+      @for (s of doctoralStudents; track s.nameKey) {
+        <div class="student-card" [class.defended]="s.status === 'soutenu'" [class.in-progress]="s.status === 'en cours'">
+          <div class="student-icon">
+            <lucide-icon [img]="Award" size="20"></lucide-icon>
+          </div>
+          <div class="student-content">
+            <div class="student-header">
+              <span class="student-name">{{ s.nameKey | translate }}</span>
+              @if (s.status === 'soutenu') {
+                <span class="status-badge status-defended">{{ 'RESOURCES.STATUS_DEFENDED' | translate }}</span>
+              } @else if (s.status === 'en cours') {
+                <span class="status-badge status-ongoing">{{ 'RESOURCES.STATUS_ONGOING' | translate }}</span>
+              }
+            </div>
+            <p class="student-thesis">{{ s.thesisKey | translate }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ Publications scientifiques -->
+<section class="section research-section alt-bg">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'RESOURCES.PUBLICATIONS_TITLE' | translate }} <span class="count-badge">09</span></h2>
+      <p class="section-desc">{{ 'RESOURCES.PUBLICATIONS_DESC' | translate }}</p>
+    </div>
+    <div class="articles-list">
+      @for (pub of publications; track pub.url; let i = $index) {
+        <div class="article-card">
+          <div class="article-number">{{ i + 1 }}</div>
+          <div class="article-content">
+            <div class="article-meta">
+              <span class="article-tag tag-article">{{ pub.tag }}</span>
+            </div>
+            <p class="article-citation" [innerHTML]="pub.citationKey | translate"></p>
+            <a [href]="pub.url" class="article-link" target="_blank" rel="noopener">
+              {{ 'RESOURCES.READ_PAPER' | translate }}
+              <lucide-icon [img]="ExternalLink" size="14"></lucide-icon>
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ Corrections -->
+<section class="section research-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'RESOURCES.CORRECTIONS_TITLE' | translate }} <span class="count-badge">01</span></h2>
+      <p class="section-desc">{{ 'RESOURCES.CORRECTIONS_DESC' | translate }}</p>
+    </div>
+    <div class="articles-list">
+      @for (pub of corrections; track pub.url; let i = $index) {
+        <div class="article-card">
+          <div class="article-number">{{ i + 1 }}</div>
+          <div class="article-content">
+            <div class="article-meta">
+              <span class="article-tag tag-correction">{{ pub.tag }}</span>
+            </div>
+            <p class="article-citation" [innerHTML]="pub.citationKey | translate"></p>
+            <a [href]="pub.url" class="article-link" target="_blank" rel="noopener">
+              {{ 'RESOURCES.READ_PAPER' | translate }}
+              <lucide-icon [img]="ExternalLink" size="14"></lucide-icon>
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ Articles de Conférence -->
+<section class="section research-section alt-bg">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'RESOURCES.CONFERENCE_TITLE' | translate }} <span class="count-badge">03</span></h2>
+      <p class="section-desc">{{ 'RESOURCES.CONFERENCE_DESC' | translate }}</p>
+    </div>
+    <div class="articles-list">
+      @for (pub of conferenceArticles; track pub.url; let i = $index) {
+        <div class="article-card">
+          <div class="article-number">{{ i + 1 }}</div>
+          <div class="article-content">
+            <div class="article-meta">
+              <span class="article-tag tag-conference">{{ pub.tag }}</span>
+            </div>
+            <p class="article-citation" [innerHTML]="pub.citationKey | translate"></p>
+            <a [href]="pub.url" class="article-link" target="_blank" rel="noopener">
+              {{ 'RESOURCES.READ_PAPER' | translate }}
+              <lucide-icon [img]="ExternalLink" size="14"></lucide-icon>
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ② External Links -->
 <section class="section">
   <div class="container">
     <div class="resources-grid">
@@ -34,42 +174,7 @@
   </div>
 </section>
 
-<!-- ③ Local Research -->
-<section id="local-research" class="section local-research-section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">
-        {{ 'RESOURCES.LOCAL_RESEARCH_TITLE_1' | translate }}
-        <span class="text-blue">{{ 'RESOURCES.LOCAL_RESEARCH_TITLE_2' | translate }}</span>
-      </h2>
-      <p class="section-desc">{{ 'RESOURCES.LOCAL_RESEARCH_SUBTITLE' | translate }}</p>
-    </div>
-
-    <div class="research-grid">
-      @for (paper of localResearch; track paper.titleKey) {
-        <div class="research-card">
-          <div class="research-icon">
-            <lucide-icon [img]="FileText" size="24"></lucide-icon>
-          </div>
-          <div class="research-content">
-            <h4 class="research-title">{{ paper.titleKey | translate }}</h4>
-            <div class="research-meta">
-              <span class="research-author">{{ paper.authorKey | translate }}</span>
-              <span class="research-date">{{ paper.dateKey | translate }}</span>
-            </div>
-            <p class="research-abstract">{{ paper.abstractKey | translate }}</p>
-            <a [href]="paper.url" class="btn-outline-small" target="_blank" rel="noopener">
-              {{ 'RESOURCES.READ_PAPER' | translate }}
-              <lucide-icon [img]="ExternalLink" size="14"></lucide-icon>
-            </a>
-          </div>
-        </div>
-      }
-    </div>
-  </div>
-</section>
-
-<!-- ④ CTA -->
+<!-- ⑧ CTA -->
 <section class="section cta-strip">
   <div class="container">
     <div class="cta-box">
