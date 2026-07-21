@@ -1,30 +1,34 @@
 <section class="event-header">
   <div class="grid-overlay"></div>
   <div class="container">
-    <a routerLink="/" class="back-link">
+    <a routerLink="/activities" class="back-link">
       <lucide-icon [img]="ArrowLeft" size="18"></lucide-icon>
-      {{ 'HEADER.HOME' | translate }}
+      Back to Activities
     </a>
     
-    @if (eventData()) {
+    @if (event(); as currentEvent) {
       <div class="header-content">
         <div class="header-text">
-          <span class="badge">Conference</span>
-          <h1 class="page-title">{{ eventData().title }}</h1>
+          <span class="badge" 
+                [class.badge-upcoming]="currentEvent.status === 'upcoming'"
+                [class.badge-past]="currentEvent.status === 'past'">
+            {{ currentEvent.type === 'chapter' ? 'Chapter' : 'Section' }}
+          </span>
+          <h1 class="page-title">{{ getEventTitle(currentEvent) }}</h1>
           
           <div class="event-meta">
             <div class="meta-item">
               <lucide-icon [img]="Calendar" size="20"></lucide-icon>
-              <span>{{ eventData().date }}</span>
+              <span>{{ formatDate(currentEvent.date, currentEvent.endDate) }}</span>
             </div>
             <div class="meta-item">
               <lucide-icon [img]="MapPin" size="20"></lucide-icon>
-              <span>{{ eventData().location }}</span>
+              <span>{{ currentEvent.location }}</span>
             </div>
           </div>
         </div>
         <div class="header-visual">
-          <img src="assets/events/fpsloc-2026-flyer.jpeg" alt="Event Poster" class="event-poster-img">
+          <img [src]="galleryImages()[0]" [alt]="getEventTitle(currentEvent)" class="event-poster-img" loading="lazy">
         </div>
       </div>
     } @else {
@@ -33,114 +37,172 @@
   </div>
 </section>
 
-@if (eventData()) {
+@if (event(); as currentEvent) {
 <section class="section event-body">
   <div class="container">
     <div class="body-layout">
       <!-- Main Content (Left) -->
       <div class="main-col">
-        <!-- Background -->
+        <!-- Description -->
         <div class="content-block">
-          <h2 class="block-title">Background & Rationale</h2>
-          <p class="block-text">{{ eventData().background }}</p>
+          <h2 class="block-title">About This Event</h2>
+          <p class="block-text">{{ getEventDescription(currentEvent) }}</p>
         </div>
         
-        <!-- Objectives -->
-        <div class="content-block">
-          <h2 class="block-title">Specific Objectives</h2>
-          <ul class="list-styled">
-            @for (obj of eventData().objectives; track obj) {
-              <li>
-                <lucide-icon [img]="Target" size="18" class="list-icon"></lucide-icon>
-                <span>{{ obj }}</span>
-              </li>
-            }
-          </ul>
-        </div>
-        
-        <!-- Topics -->
-        <div class="content-block">
-          <h2 class="block-title">Scientific Topics</h2>
-          <div class="topics-grid">
-            @for (topic of eventData().topics; track topic) {
-              <div class="topic-tag">{{ topic }}</div>
-            }
-          </div>
-        </div>
-        
-        <!-- Schedule -->
-        <div class="content-block schedule-block">
-          <h2 class="block-title">Conference Schedule</h2>
-          
-          @for (day of eventData().schedule; track day.day) {
-            <div class="schedule-day">
-              <div class="day-header">
-                <h3>{{ day.day }}</h3>
-                <span class="day-theme">{{ day.theme }}</span>
-              </div>
-              
-              <div class="timeline">
-                @for (session of day.sessions; track session.time) {
-                  <div class="timeline-item">
-                    <div class="time-col">
-                      <lucide-icon [img]="Clock" size="16"></lucide-icon>
-                      {{ session.time }}
-                    </div>
-                    <div class="activity-col">
-                      <h4>{{ session.activity }}</h4>
-                      @if (session.notes) {
-                        <p class="notes">{{ session.notes }}</p>
-                      }
-                    </div>
+        @if (currentEvent.stats && currentEvent.stats.length > 0) {
+          <!-- Statistics -->
+          <div class="content-block">
+            <h2 class="block-title">Key Statistics</h2>
+            <div class="stats-grid">
+              @for (stat of currentEvent.stats; track stat.label) {
+                <div class="stat-card">
+                  <div class="stat-icon">
+                    <lucide-icon [img]="Award" size="24"></lucide-icon>
                   </div>
-                }
+                  <div class="stat-number">{{ stat.value }}</div>
+                  <div class="stat-label">{{ getStatLabel(stat) }}</div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+        
+        @if (currentEvent.isRecurring) {
+          <!-- Recurring Event Info -->
+          <div class="content-block">
+            <h2 class="block-title">Meeting Schedule</h2>
+            <div class="schedule-info">
+              <div class="schedule-item">
+                <lucide-icon [img]="Clock" size="20"></lucide-icon>
+                <div>
+                  <h4>When</h4>
+                  <p>Last Thursday of every month</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <lucide-icon [img]="Users" size="20"></lucide-icon>
+                <div>
+                  <h4>Time</h4>
+                  <p>3:00 PM - 5:30 PM</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <lucide-icon [img]="BookOpen" size="20"></lucide-icon>
+                <div>
+                  <h4>Format</h4>
+                  <p>Research presentations and discussions</p>
+                </div>
               </div>
             </div>
-          }
-        </div>
+          </div>
+        }
+        
+        <!-- Gallery -->
+        @if (galleryImages().length > 1) {
+          <div class="content-block">
+            <h2 class="block-title">Photo Gallery</h2>
+            <div class="gallery-grid">
+              @for (image of galleryImages(); track image; let i = $index) {
+                <div class="gallery-item" (click)="openLightbox(i)">
+                  <img [src]="image" [alt]="getEventTitle(currentEvent)" loading="lazy">
+                  <div class="gallery-overlay">
+                    <span class="zoom-icon">&#128269;</span>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
       </div>
       
       <!-- Sidebar (Right) -->
       <div class="sidebar-col">
-        <!-- Organized By -->
+        <!-- Event Info -->
         <div class="sidebar-widget">
-          <h3 class="widget-title">Organized By</h3>
-          <ul class="list-styled simple-list">
-            @for (org of eventData().organizedBy; track org) {
-              <li>{{ org }}</li>
-            }
-          </ul>
-        </div>
-        
-        <!-- Speakers -->
-        <div class="sidebar-widget">
-          <h3 class="widget-title">Key Speakers</h3>
-          <div class="speakers-list">
-            @for (speaker of eventData().speakers; track speaker.name) {
-              <div class="speaker-card">
-                <div class="speaker-avatar">
-                  <lucide-icon [img]="Users" size="24"></lucide-icon>
-                </div>
-                <div class="speaker-info">
-                  <h4>{{ speaker.name }}</h4>
-                  <span>{{ speaker.role }}</span>
-                </div>
+          <h3 class="widget-title">Event Details</h3>
+          <div class="info-list">
+            <div class="info-item">
+              <lucide-icon [img]="Calendar" size="18"></lucide-icon>
+              <div>
+                <h4>Date</h4>
+                <p>{{ formatDate(currentEvent.date, currentEvent.endDate) }}</p>
               </div>
-            }
+            </div>
+            <div class="info-item">
+              <lucide-icon [img]="MapPin" size="18"></lucide-icon>
+              <div>
+                <h4>Location</h4>
+                <p>{{ currentEvent.location }}</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <lucide-icon [img]="Users" size="18"></lucide-icon>
+              <div>
+                <h4>Organized By</h4>
+                <p>{{ currentEvent.type === 'chapter' ? 'NASEY OPTICA Chapter' : 'Central Africa Local Section' }}</p>
+              </div>
+            </div>
           </div>
         </div>
         
-        <!-- Action -->
-        <div class="sidebar-widget cta-widget">
-          <h3 class="widget-title">Join the Event</h3>
-          <p>Register now to secure your spot at FPSLOC 2026.</p>
-          <button class="btn-primary full-width mt-3">
-            Register Now
-            <lucide-icon [img]="ChevronRight" size="18"></lucide-icon>
-          </button>
-        </div>
+        @if (currentEvent.status === 'upcoming') {
+          <!-- Action for upcoming events -->
+          <div class="sidebar-widget cta-widget">
+            <h3 class="widget-title">Join the Event</h3>
+            @if (currentEvent.slug === 'maple-2026') {
+              <p>This event is pending OPTICA Foundation funding confirmation.</p>
+              <button class="btn-secondary full-width mt-3" disabled>
+                Pending Confirmation
+              </button>
+            } @else {
+              <p>Register now to secure your spot.</p>
+              <button class="btn-primary full-width mt-3">
+                Register Now
+                <lucide-icon [img]="ChevronRight" size="18"></lucide-icon>
+              </button>
+            }
+          </div>
+        }
       </div>
     </div>
   </div>
 </section>
+}
+
+<!-- ── Lightbox Modal ─────────────────────────── -->
+@if (lightboxOpen()) {
+  <div class="lightbox-backdrop" (click)="closeLightbox()">
+    <div class="lightbox-container" (click)="$event.stopPropagation()">
+
+      <!-- Close button -->
+      <button class="lightbox-close" (click)="closeLightbox()" aria-label="Close">
+        <lucide-icon [img]="X" size="24"></lucide-icon>
+      </button>
+
+      <!-- Counter -->
+      <div class="lightbox-counter">
+        {{ lightboxIndex() + 1 }} / {{ galleryImages().length }}
+      </div>
+
+      <!-- Image -->
+      <img
+        [src]="galleryImages()[lightboxIndex()]"
+        alt="Gallery image"
+        class="lightbox-img"
+      >
+
+      <!-- Prev -->
+      @if (galleryImages().length > 1) {
+        <button class="lightbox-nav lightbox-prev" (click)="prevImage()" aria-label="Previous">
+          <lucide-icon [img]="ChevronLeft" size="32"></lucide-icon>
+        </button>
+
+        <!-- Next -->
+        <button class="lightbox-nav lightbox-next" (click)="nextImage()" aria-label="Next">
+          <lucide-icon [img]="ChevronRight" size="32"></lucide-icon>
+        </button>
+      }
+
+    </div>
+  </div>
 }

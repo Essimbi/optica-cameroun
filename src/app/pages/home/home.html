@@ -1,36 +1,56 @@
 <app-hero></app-hero>
 
 <!-- ① Next Event Highlight -->
-<section class="section highlight-section">
-  <div class="container">
-    <div class="highlight-card">
-      <div class="highlight-content">
-        <span class="highlight-badge">{{ 'HIGHLIGHT.BADGE' | translate }}</span>
-        <h2 class="highlight-title">{{ 'HIGHLIGHT.EVENT_TITLE' | translate }}</h2>
-        <div class="highlight-meta">
-          <div class="meta-item">
-            <lucide-icon [img]="Calendar" size="18"></lucide-icon>
-            {{ 'HIGHLIGHT.EVENT_DATE' | translate }}
+@if (nextEvent) {
+  <section class="section highlight-section">
+    <div class="container">
+      <div class="highlight-card">
+        <div class="highlight-content">
+          <span class="highlight-badge">{{ 'RECENT.NEXT_EVENT' | translate }}</span>
+          <h2 class="highlight-title">{{ getEventTitle(nextEvent) }}</h2>
+          <div class="highlight-meta">
+            <div class="meta-item">
+              <lucide-icon [img]="Calendar" size="18"></lucide-icon>
+              {{ formatDate(nextEvent.date) }}
+            </div>
+            <div class="meta-item">
+              <lucide-icon [img]="Target" size="18"></lucide-icon>
+              {{ nextEvent.location }}
+            </div>
           </div>
-          <div class="meta-item">
-            <lucide-icon [img]="Target" size="18"></lucide-icon>
-            {{ 'HIGHLIGHT.EVENT_LOCATION' | translate }}
-          </div>
+          <p class="highlight-desc">{{ getEventSummary(nextEvent) }}</p>
+          <button class="btn-primary" [routerLink]="'/events/' + nextEvent.slug">
+            {{ 'RECENT.LEARN_MORE' | translate }}
+            <lucide-icon [img]="ArrowRight" size="18"></lucide-icon>
+          </button>
         </div>
-        <p class="highlight-desc">{{ 'HIGHLIGHT.EVENT_DESC' | translate }}</p>
-        <button class="btn-primary" routerLink="/events/fpsloc-2026">
-          {{ 'HIGHLIGHT.BTN_REGISTER' | translate }}
-          <lucide-icon [img]="ArrowRight" size="18"></lucide-icon>
-        </button>
+        <div class="highlight-image">
+          <img [src]="getCoverImage(nextEvent)" [alt]="getEventTitle(nextEvent)" class="event-poster">
+        </div>
       </div>
-      <div class="highlight-image">
-        <img src="assets/events/fpsloc-2026-flyer.jpeg" alt="FPSLOC 2026 Flyer" class="event-poster">
-      </div>
+    </div>
+  </section>
+}
+
+<!-- ② Chapter Key Stats -->
+<section class="section stats-section">
+  <div class="container text-center">
+    <h3 class="stats-title">{{ 'RECENT.STATS_TITLE' | translate }}</h3>
+    <div class="stats-grid">
+      @for (stat of keyStats; track stat.labelKey) {
+        <div class="stat-card">
+          <div class="stat-icon">
+            <lucide-icon [img]="stat.icon" size="28"></lucide-icon>
+          </div>
+          <div class="stat-number">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.labelKey | translate }}</div>
+        </div>
+      }
     </div>
   </div>
 </section>
 
-<!-- ② Ecosystem Split -->
+<!-- ③ Ecosystem Split -->
 <section class="section about-section">
   <div class="container">
     <div class="section-header">
@@ -72,7 +92,7 @@
 <!-- ③ Optica Code of Conduct -->
 <app-code-of-conduct></app-code-of-conduct>
 
-<!-- ④ Recent Activities — keys resolved by | translate -->
+<!-- ④ Recent Activities — données réelles du chapter -->
 <section class="section recent-activities">
   <div class="container">
     <div class="section-header d-flex-between">
@@ -90,13 +110,15 @@
     </div>
 
     <div class="events-grid">
-      @for (event of recentEvents; track event.titleKey) {
-        <div class="event-mini-card">
-          <div class="event-mini-image"></div>
+      @for (event of recentEvents; track event.id) {
+        <div class="event-mini-card" [routerLink]="'/events/' + event.slug">
+          <div class="event-mini-image">
+            <img [src]="getCoverImage(event)" [alt]="getEventTitle(event)" loading="lazy">
+          </div>
           <div class="event-mini-content">
-            <span class="event-mini-type">{{ event.typeKey | translate }}</span>
-            <h4 class="event-mini-title">{{ event.titleKey | translate }}</h4>
-            <span class="event-mini-date">{{ event.dateKey | translate }}</span>
+            <span class="event-mini-type">{{ event.type === 'chapter' ? 'Chapter' : 'Section' }}</span>
+            <h4 class="event-mini-title">{{ getEventTitle(event) }}</h4>
+            <span class="event-mini-date">{{ formatDate(event.date) }}</span>
           </div>
         </div>
       }
@@ -142,12 +164,12 @@
   <div class="container text-center">
     <h3 class="partners-title">{{ 'PARTNERS_STRIP.TITLE' | translate }}</h3>
     <div class="partners-logo-grid">
-      <div class="partner-logo-image">
+      <a href="https://www.optica.org/" target="_blank" class="partner-logo-link">
         <img src="partners/optica.png" alt="Optica International" class="partner-logo-img">
-      </div>
-      <div class="partner-logo-placeholder">Partner 2</div>
-      <div class="partner-logo-placeholder">Partner 3</div>
-      <div class="partner-logo-placeholder">Partner 4</div>
+      </a>
+      <a href="https://photonics.knust.edu.gh" target="_blank" class="partner-logo-link">
+        <img src="partners/GPOL.png" alt="GPOL Ghana" class="partner-logo-img">
+      </a>
     </div>
   </div>
 </section>

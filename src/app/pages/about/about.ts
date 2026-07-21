@@ -8,7 +8,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CodeOfConduct, LucideAngularModule, RouterLink, TranslatePipe],
+  imports: [CodeOfConduct, LucideAngularModule, TranslatePipe, RouterLink],
   templateUrl: './about.html',
   styleUrl: './about.scss'
 })
@@ -20,6 +20,15 @@ export class About {
   readonly Award = Award;
   readonly Microscope = Microscope;
   readonly ChevronRight = ChevronRight;
+
+  executiveBoard = [
+    { nameKey: 'ABOUT.SUPERVISOR', roleKey: 'ABOUT.SUPERVISOR_ROLE' },
+    { nameKey: 'ABOUT.ADVISOR', roleKey: 'ABOUT.ADVISOR_ROLE' },
+    { nameKey: 'ABOUT.CHAIRMAN', roleKey: 'ABOUT.CHAIRMAN_ROLE' },
+    { nameKey: 'ABOUT.VICE_CHAIRMAN', roleKey: 'ABOUT.VICE_CHAIRMAN_ROLE' },
+    { nameKey: 'ABOUT.TREASURER', roleKey: 'ABOUT.TREASURER_ROLE' },
+    { nameKey: 'ABOUT.SECRETARY', roleKey: 'ABOUT.SECRETARY_ROLE' },
+  ];
 
   milestones = [
     { year: '2023', labelKey: 'ABOUT.MILESTONE_1' },

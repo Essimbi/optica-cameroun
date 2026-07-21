@@ -34,7 +34,42 @@
   </div>
 </section>
 
-<!-- ③ CTA -->
+<!-- ③ Local Research -->
+<section id="local-research" class="section local-research-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        {{ 'RESOURCES.LOCAL_RESEARCH_TITLE_1' | translate }}
+        <span class="text-blue">{{ 'RESOURCES.LOCAL_RESEARCH_TITLE_2' | translate }}</span>
+      </h2>
+      <p class="section-desc">{{ 'RESOURCES.LOCAL_RESEARCH_SUBTITLE' | translate }}</p>
+    </div>
+
+    <div class="research-grid">
+      @for (paper of localResearch; track paper.titleKey) {
+        <div class="research-card">
+          <div class="research-icon">
+            <lucide-icon [img]="FileText" size="24"></lucide-icon>
+          </div>
+          <div class="research-content">
+            <h4 class="research-title">{{ paper.titleKey | translate }}</h4>
+            <div class="research-meta">
+              <span class="research-author">{{ paper.authorKey | translate }}</span>
+              <span class="research-date">{{ paper.dateKey | translate }}</span>
+            </div>
+            <p class="research-abstract">{{ paper.abstractKey | translate }}</p>
+            <a [href]="paper.url" class="btn-outline-small" target="_blank" rel="noopener">
+              {{ 'RESOURCES.READ_PAPER' | translate }}
+              <lucide-icon [img]="ExternalLink" size="14"></lucide-icon>
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ④ CTA -->
 <section class="section cta-strip">
   <div class="container">
     <div class="cta-box">

@@ -39,6 +39,15 @@
   display: flex; align-items: center; justify-content: center; color: $accent-blue;
 }
 
+.whatsapp-link {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: #25D366 !important; // Couleur officielle WhatsApp
+    text-decoration: underline;
+  }
+}
+
 /* ── Form ─────────────────────────────────────── */
 .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
 .form-row {

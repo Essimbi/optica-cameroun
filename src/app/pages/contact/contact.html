@@ -27,14 +27,14 @@
             <div class="info-icon"><lucide-icon [img]="Mail" size="22"></lucide-icon></div>
             <div>
               <h4>{{ 'CONTACT.EMAIL_LABEL' | translate }}</h4>
-              <a href="mailto:contact@opticacameroon.org">contact&#64;opticacameroon.org</a>
+              <a href="mailto:{{ 'CONTACT.EMAIL_VALUE' | translate }}">{{ 'CONTACT.EMAIL_VALUE' | translate }}</a>
             </div>
           </div>
           <div class="info-item">
             <div class="info-icon"><lucide-icon [img]="Phone" size="22"></lucide-icon></div>
             <div>
               <h4>{{ 'CONTACT.PHONE_LABEL' | translate }}</h4>
-              <p>{{ 'CONTACT.PHONE_VALUE' | translate }}</p>
+              <a href="https://wa.me/237671049173" target="_blank" class="whatsapp-link">{{ 'CONTACT.PHONE_VALUE' | translate }}</a>
             </div>
           </div>
         </div>

@@ -42,9 +42,9 @@
     <!-- Events Grid -->
     <div class="events-grid">
       @for (event of filteredEvents(); track event.id) {
-        <div class="event-card">
+        <div class="event-card" [routerLink]="'/events/' + event.slug">
           <div class="event-image-wrapper">
-            <div class="event-image-placeholder" [class.chapter-bg]="event.type === 'chapter'"></div>
+            <img [src]="getCoverImage(event)" [alt]="getEventTitle(event)" class="event-image" loading="lazy">
             <div class="event-badges">
               <span class="badge"
                 [class.badge-upcoming]="event.status === 'upcoming'"
@@ -58,12 +58,12 @@
           </div>
 
           <div class="event-content">
-            <h3 class="event-title">{{ event.titleKey | translate }}</h3>
+            <h3 class="event-title">{{ getEventTitle(event) }}</h3>
 
             <div class="event-meta">
               <div class="meta-item">
                 <lucide-icon [img]="CalendarIcon" size="16" class="meta-icon"></lucide-icon>
-                <span>{{ event.date | date:'longDate' }}</span>
+                <span>{{ formatDate(event.date, event.endDate) }}</span>
               </div>
               <div class="meta-item">
                 <lucide-icon [img]="MapPinIcon" size="16" class="meta-icon"></lucide-icon>
@@ -71,7 +71,18 @@
               </div>
             </div>
 
-            <p class="event-description">{{ event.descKey | translate }}</p>
+            <p class="event-description">{{ getEventSummary(event) }}</p>
+
+            @if (event.stats && event.stats.length > 0) {
+              <div class="event-stats">
+                @for (stat of event.stats.slice(0, 2); track stat.label) {
+                  <div class="stat-item">
+                    <span class="stat-value">{{ stat.value }}</span>
+                    <span class="stat-label">{{ stat.label[getCurrentLang()] }}</span>
+                  </div>
+                }
+              </div>
+            }
 
             <div class="event-actions">
               @if (event.status === 'upcoming') {

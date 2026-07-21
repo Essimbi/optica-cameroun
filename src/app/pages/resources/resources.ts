@@ -60,5 +60,29 @@ export class Resources {
     }
   ];
 
+  localResearch = [
+    {
+      titleKey: 'RESOURCES.RESEARCH_1_TITLE',
+      authorKey: 'RESOURCES.RESEARCH_1_AUTHOR',
+      dateKey: 'RESOURCES.RESEARCH_1_DATE',
+      abstractKey: 'RESOURCES.RESEARCH_1_ABSTRACT',
+      url: '#'
+    },
+    {
+      titleKey: 'RESOURCES.RESEARCH_2_TITLE',
+      authorKey: 'RESOURCES.RESEARCH_2_AUTHOR',
+      dateKey: 'RESOURCES.RESEARCH_2_DATE',
+      abstractKey: 'RESOURCES.RESEARCH_2_ABSTRACT',
+      url: '#'
+    },
+    {
+      titleKey: 'RESOURCES.RESEARCH_3_TITLE',
+      authorKey: 'RESOURCES.RESEARCH_3_AUTHOR',
+      dateKey: 'RESOURCES.RESEARCH_3_DATE',
+      abstractKey: 'RESOURCES.RESEARCH_3_ABSTRACT',
+      url: '#'
+    }
+  ];
+
   icons: any = { Globe, GraduationCap, FileText, Rss };
 }

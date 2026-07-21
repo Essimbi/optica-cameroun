@@ -66,7 +66,54 @@
   </div>
 </section>
 
-<!-- ④ Optica Code of Conduct -->
+<!-- ④ Chapter Leadership -->
+<section class="section leadership-section">
+  <div class="container">
+    <div class="section-header center">
+      <span class="badge">Chapter Executive Board</span>
+      <h2 class="section-title">{{ 'ABOUT.LEADERSHIP_TITLE' | translate }}</h2>
+      <p class="section-desc">{{ 'ABOUT.LEADERSHIP_DESC' | translate }}</p>
+    </div>
+    <div class="leadership-grid">
+      @for (member of executiveBoard; track member.nameKey) {
+        <div class="leadership-card">
+          <div class="member-info">
+            <h3>{{ member.nameKey | translate }}</h3>
+            <span class="member-role">{{ member.roleKey | translate }}</span>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="roles-description">
+      <p class="description-text">{{ 'ABOUT.LEADERSHIP_ROLES_DESC' | translate }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ Research Excellence -->
+<section class="section research-section">
+  <div class="container">
+    <div class="research-layout">
+      <div class="research-text">
+        <span class="badge">{{ 'ABOUT.RESEARCH_TITLE' | translate }}</span>
+        <h2 class="section-title">{{ 'ABOUT.RESEARCH_DESC' | translate }}</h2>
+        <a routerLink="/resources" fragment="local-research" class="btn-outline">
+          <lucide-icon [img]="BookOpen" size="18"></lucide-icon>
+          {{ 'ABOUT.PUBLICATIONS_LINK' | translate }}
+        </a>
+      </div>
+      <div class="research-stats">
+        <div class="stat-block">
+          <div class="stat-number">9</div>
+          <div class="stat-label">{{ 'RECENT.RESEARCH_PUBLICATIONS' | translate }}</div>
+          <div class="stat-sub">2024-2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ Optica Code of Conduct -->
 <app-code-of-conduct></app-code-of-conduct>
 
 <!-- ⑤ Values -->
@@ -115,22 +162,14 @@
       <p class="section-desc">{{ 'ABOUT.PARTNERS_DESC' | translate }}</p>
     </div>
     <div class="partners-grid">
-      <div class="partner-card">
+      <a href="https://www.optica.org/" target="_blank" class="partner-card">
         <img src="partners/optica.png" alt="Optica International" class="partner-logo">
         <span class="partner-name">Optica International</span>
-      </div>
-      <div class="partner-card">
-        <div class="partner-placeholder"></div>
-        <span class="partner-name">Partner 2</span>
-      </div>
-      <div class="partner-card">
-        <div class="partner-placeholder"></div>
-        <span class="partner-name">Partner 3</span>
-      </div>
-      <div class="partner-card">
-        <div class="partner-placeholder"></div>
-        <span class="partner-name">Partner 4</span>
-      </div>
+      </a>
+      <a href="https://photonics.knust.edu.gh" target="_blank" class="partner-card">
+        <img src="partners/GPOL.png" alt="GPOL Ghana" class="partner-logo">
+        <span class="partner-name">GPOL Ghana</span>
+      </a>
     </div>
   </div>
 </section>
