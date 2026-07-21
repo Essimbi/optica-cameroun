@@ -275,20 +275,15 @@
 .partners-section { background-color: $bg-surface-light; }
 
 .partners-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
-  
-  @media (min-width: 576px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (min-width: 992px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 .partner-card {
+  width: 100%;
+  max-width: 260px;
   background-color: $bg-surface;
   border: $border-subtle;
   border-radius: $radius-lg;

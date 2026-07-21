@@ -57,7 +57,6 @@ export class Partners {
   onSubmit() {
     if (this.partnerForm.valid) {
       // In production: write to Firestore / webhook to Google Sheets
-      console.log('Partner form submitted:', this.partnerForm.value);
       this.formSubmitted.set(true);
     } else {
       this.partnerForm.markAllAsTouched();

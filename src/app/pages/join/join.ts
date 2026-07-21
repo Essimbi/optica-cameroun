@@ -48,14 +48,12 @@ export class Join {
 
   submitStudent() {
     if (this.studentForm.valid) {
-      console.log('Student registration:', this.studentForm.value);
       this.studentFormSubmitted.set(true);
     } else { this.studentForm.markAllAsTouched(); }
   }
 
   submitProfessional() {
     if (this.professionalForm.valid) {
-      console.log('Professional registration:', this.professionalForm.value);
       this.professionalFormSubmitted.set(true);
     } else { this.professionalForm.markAllAsTouched(); }
   }

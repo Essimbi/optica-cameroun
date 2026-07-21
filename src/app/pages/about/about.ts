@@ -30,6 +30,14 @@ export class About {
     { nameKey: 'ABOUT.SECRETARY', roleKey: 'ABOUT.SECRETARY_ROLE' },
   ];
 
+  localSectionBoard = [
+    { nameKey: 'ABOUT.LOCAL_PRESIDENT', roleKey: 'ABOUT.LOCAL_PRESIDENT_ROLE' },
+    { nameKey: 'ABOUT.LOCAL_VICE_PRESIDENT', roleKey: 'ABOUT.LOCAL_VICE_PRESIDENT_ROLE' },
+    { nameKey: 'ABOUT.LOCAL_TREASURER', roleKey: 'ABOUT.LOCAL_TREASURER_ROLE' },
+    { nameKey: 'ABOUT.LOCAL_SECRETARY', roleKey: 'ABOUT.LOCAL_SECRETARY_ROLE' },
+    { nameKey: 'ABOUT.LOCAL_VICE_SECRETARY', roleKey: 'ABOUT.LOCAL_VICE_SECRETARY_ROLE' },
+  ];
+
   milestones = [
     { year: '2023', labelKey: 'ABOUT.MILESTONE_1' },
     { year: '2024', labelKey: 'ABOUT.MILESTONE_2' },

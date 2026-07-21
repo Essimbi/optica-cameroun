@@ -32,7 +32,6 @@ export class Contact {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log('Contact form:', this.contactForm.value);
       this.submitted.set(true);
     } else {
       this.contactForm.markAllAsTouched();

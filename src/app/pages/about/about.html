@@ -66,11 +66,29 @@
   </div>
 </section>
 
-<!-- ④ Chapter Leadership -->
+<!-- ④ Leadership -->
 <section class="section leadership-section">
   <div class="container">
+    <!-- Local Section Board -->
     <div class="section-header center">
-      <span class="badge">Chapter Executive Board</span>
+      <span class="badge">{{ 'ABOUT.ENTITY_SECTION_TITLE' | translate }}</span>
+      <h2 class="section-title">{{ 'ABOUT.LOCAL_LEADERSHIP_TITLE' | translate }}</h2>
+      <p class="section-desc">{{ 'ABOUT.LOCAL_LEADERSHIP_DESC' | translate }}</p>
+    </div>
+    <div class="leadership-grid">
+      @for (member of localSectionBoard; track member.nameKey) {
+        <div class="leadership-card">
+          <div class="member-info">
+            <h3>{{ member.nameKey | translate }}</h3>
+            <span class="member-role">{{ member.roleKey | translate }}</span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Chapter Executive Board -->
+    <div class="section-header center" style="margin-top: 5rem;">
+      <span class="badge">{{ 'ABOUT.ENTITY_CHAPTER_TITLE' | translate }}</span>
       <h2 class="section-title">{{ 'ABOUT.LEADERSHIP_TITLE' | translate }}</h2>
       <p class="section-desc">{{ 'ABOUT.LEADERSHIP_DESC' | translate }}</p>
     </div>

@@ -43,10 +43,6 @@ export class TranslationService {
       this.currentLangSignal.set(langToUse);
       this.isInitialized.set(true);
       
-      console.log('Translation service initialized with language:', langToUse);
-      console.log('Available languages:', this.translate.getLangs());
-      console.log('Test translation (HOME):', this.translate.instant('HEADER.HOME'));
-      
     } catch (error) {
       console.error('Error initializing translation service:', error);
       this.isInitialized.set(true); // Mark as initialized even if failed
@@ -68,9 +64,6 @@ export class TranslationService {
         await this.translate.use(langCode).toPromise();
         this.currentLangSignal.set(langCode);
         localStorage.setItem('selectedLang', langCode);
-        
-        console.log('Language changed to:', langCode);
-        console.log('Test translation after change:', this.translate.instant('HEADER.HOME'));
       } catch (error) {
         console.error('Error changing language:', error);
       }
