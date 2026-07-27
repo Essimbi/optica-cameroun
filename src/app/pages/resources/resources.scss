@@ -198,6 +198,13 @@
   font-weight: 500;
 }
 
+.student-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
 .status-badge {
   flex-shrink: 0;
   display: inline-block;
@@ -209,8 +216,9 @@
   letter-spacing: 0.5px;
   white-space: nowrap;
 }
-.status-defended { background-color: rgba(52, 211, 153, 0.15); color: #34d399; }
-.status-ongoing  { background-color: rgba($accent-blue, 0.15); color: $accent-blue; }
+.status-defended     { background-color: rgba(52, 211, 153, 0.15); color: #34d399; }
+.status-ongoing      { background-color: rgba($accent-blue, 0.15); color: $accent-blue; }
+.status-cosupervision { background-color: rgba(168, 85, 247, 0.15); color: #c084fc; }
 
 /* =========================================
    ARTICLE CARDS (Publications / Corrections / Conférence)

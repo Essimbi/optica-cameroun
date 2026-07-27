@@ -77,12 +77,24 @@
     </div>
     <div class="leadership-grid">
       @for (member of localSectionBoard; track member.nameKey) {
-        <div class="leadership-card">
-          <div class="member-info">
-            <h3>{{ member.nameKey | translate }}</h3>
-            <span class="member-role">{{ member.roleKey | translate }}</span>
+        @if (member.link) {
+          <a [href]="member.link" target="_blank" rel="noopener" class="leadership-card has-link">
+            <div class="member-info">
+              <h3>
+                {{ member.nameKey | translate }}
+                <lucide-icon [img]="ExternalLink" size="14" class="link-icon"></lucide-icon>
+              </h3>
+              <span class="member-role">{{ member.roleKey | translate }}</span>
+            </div>
+          </a>
+        } @else {
+          <div class="leadership-card">
+            <div class="member-info">
+              <h3>{{ member.nameKey | translate }}</h3>
+              <span class="member-role">{{ member.roleKey | translate }}</span>
+            </div>
           </div>
-        </div>
+        }
       }
     </div>
 
@@ -94,12 +106,24 @@
     </div>
     <div class="leadership-grid">
       @for (member of executiveBoard; track member.nameKey) {
-        <div class="leadership-card">
-          <div class="member-info">
-            <h3>{{ member.nameKey | translate }}</h3>
-            <span class="member-role">{{ member.roleKey | translate }}</span>
+        @if (member.link) {
+          <a [href]="member.link" target="_blank" rel="noopener" class="leadership-card has-link">
+            <div class="member-info">
+              <h3>
+                {{ member.nameKey | translate }}
+                <lucide-icon [img]="ExternalLink" size="14" class="link-icon"></lucide-icon>
+              </h3>
+              <span class="member-role">{{ member.roleKey | translate }}</span>
+            </div>
+          </a>
+        } @else {
+          <div class="leadership-card">
+            <div class="member-info">
+              <h3>{{ member.nameKey | translate }}</h3>
+              <span class="member-role">{{ member.roleKey | translate }}</span>
+            </div>
           </div>
-        </div>
+        }
       }
     </div>
     <div class="roles-description">

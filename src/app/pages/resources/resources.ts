@@ -7,6 +7,7 @@ export interface StudentEntry {
   thesisKey: string;
   yearKey?: string;
   status?: 'en cours' | 'soutenu';
+  coSupervision?: boolean;
 }
 
 export interface Publication {
@@ -79,15 +80,15 @@ export class Resources {
 
   // ── Master Recherche (09) ─────────────────────
   masterStudents: StudentEntry[] = [
-    { nameKey: 'RESOURCES.MASTER_1_NAME', thesisKey: 'RESOURCES.MASTER_1_TOPIC', yearKey: 'RESOURCES.MASTER_1_YEAR' },
-    { nameKey: 'RESOURCES.MASTER_2_NAME', thesisKey: 'RESOURCES.MASTER_2_TOPIC', yearKey: 'RESOURCES.MASTER_2_YEAR' },
-    { nameKey: 'RESOURCES.MASTER_3_NAME', thesisKey: 'RESOURCES.MASTER_3_TOPIC', yearKey: 'RESOURCES.MASTER_3_YEAR' },
-    { nameKey: 'RESOURCES.MASTER_4_NAME', thesisKey: 'RESOURCES.MASTER_4_TOPIC', yearKey: 'RESOURCES.MASTER_4_YEAR' },
-    { nameKey: 'RESOURCES.MASTER_5_NAME', thesisKey: 'RESOURCES.MASTER_5_TOPIC', yearKey: 'RESOURCES.MASTER_5_YEAR' },
-    { nameKey: 'RESOURCES.MASTER_6_NAME', thesisKey: 'RESOURCES.MASTER_6_TOPIC', yearKey: 'RESOURCES.MASTER_6_YEAR' },
-    { nameKey: 'RESOURCES.MASTER_7_NAME', thesisKey: 'RESOURCES.MASTER_7_TOPIC', yearKey: 'RESOURCES.MASTER_7_YEAR' },
-    { nameKey: 'RESOURCES.MASTER_8_NAME', thesisKey: 'RESOURCES.MASTER_8_TOPIC', yearKey: 'RESOURCES.MASTER_8_YEAR' },
-    { nameKey: 'RESOURCES.MASTER_9_NAME', thesisKey: 'RESOURCES.MASTER_9_TOPIC', yearKey: 'RESOURCES.MASTER_9_YEAR', status: 'soutenu' }
+    { nameKey: 'RESOURCES.MASTER_1_NAME', thesisKey: 'RESOURCES.MASTER_1_TOPIC', yearKey: 'RESOURCES.MASTER_1_YEAR', status: 'en cours', coSupervision: true },
+    { nameKey: 'RESOURCES.MASTER_2_NAME', thesisKey: 'RESOURCES.MASTER_2_TOPIC', yearKey: 'RESOURCES.MASTER_2_YEAR', status: 'en cours', coSupervision: true },
+    { nameKey: 'RESOURCES.MASTER_3_NAME', thesisKey: 'RESOURCES.MASTER_3_TOPIC', yearKey: 'RESOURCES.MASTER_3_YEAR', status: 'en cours', coSupervision: false },
+    { nameKey: 'RESOURCES.MASTER_4_NAME', thesisKey: 'RESOURCES.MASTER_4_TOPIC', yearKey: 'RESOURCES.MASTER_4_YEAR', status: 'en cours', coSupervision: true },
+    { nameKey: 'RESOURCES.MASTER_5_NAME', thesisKey: 'RESOURCES.MASTER_5_TOPIC', yearKey: 'RESOURCES.MASTER_5_YEAR', status: 'en cours', coSupervision: true },
+    { nameKey: 'RESOURCES.MASTER_6_NAME', thesisKey: 'RESOURCES.MASTER_6_TOPIC', yearKey: 'RESOURCES.MASTER_6_YEAR', status: 'en cours', coSupervision: false },
+    { nameKey: 'RESOURCES.MASTER_7_NAME', thesisKey: 'RESOURCES.MASTER_7_TOPIC', yearKey: 'RESOURCES.MASTER_7_YEAR', status: 'soutenu', coSupervision: false },
+    { nameKey: 'RESOURCES.MASTER_8_NAME', thesisKey: 'RESOURCES.MASTER_8_TOPIC', yearKey: 'RESOURCES.MASTER_8_YEAR', status: 'soutenu', coSupervision: true },
+    { nameKey: 'RESOURCES.MASTER_9_NAME', thesisKey: 'RESOURCES.MASTER_9_TOPIC', yearKey: 'RESOURCES.MASTER_9_YEAR', status: 'soutenu', coSupervision: false }
   ];
 
   // ── Doctorats (03) ───────────────────────────

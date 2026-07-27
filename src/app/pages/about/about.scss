@@ -155,6 +155,35 @@
   }
 }
 
+a.leadership-card.has-link {
+  text-decoration: none;
+  cursor: pointer;
+  
+  h3 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: color 0.2s ease;
+  }
+
+  .link-icon {
+    opacity: 0.6;
+    color: $accent-blue;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  &:hover {
+    h3 {
+      color: $accent-blue;
+    }
+    .link-icon {
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
 .member-info {
   h3 {
     font-size: 1.125rem;

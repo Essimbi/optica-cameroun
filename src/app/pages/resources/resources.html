@@ -16,16 +16,23 @@
     </div>
     <div class="student-grid">
       @for (s of masterStudents; track s.nameKey) {
-        <div class="student-card" [class.defended]="s.status === 'soutenu'">
+        <div class="student-card" [class.defended]="s.status === 'soutenu'" [class.in-progress]="s.status === 'en cours'">
           <div class="student-icon">
             <lucide-icon [img]="GraduationCap" size="20"></lucide-icon>
           </div>
           <div class="student-content">
             <div class="student-header">
               <span class="student-name">{{ s.nameKey | translate }}</span>
-              @if (s.status === 'soutenu') {
-                <span class="status-badge status-defended">{{ 'RESOURCES.STATUS_DEFENDED' | translate }}</span>
-              }
+              <div class="student-badges">
+                @if (s.coSupervision) {
+                  <span class="status-badge status-cosupervision">{{ 'RESOURCES.STATUS_COSUPERVISION' | translate }}</span>
+                }
+                @if (s.status === 'soutenu') {
+                  <span class="status-badge status-defended">{{ 'RESOURCES.STATUS_DEFENDED' | translate }}</span>
+                } @else if (s.status === 'en cours') {
+                  <span class="status-badge status-ongoing">{{ 'RESOURCES.STATUS_ONGOING' | translate }}</span>
+                }
+              </div>
             </div>
             <p class="student-thesis">{{ s.thesisKey | translate }}</p>
             <span class="student-year">{{ 'RESOURCES.ACADEMIC_YEAR' | translate }} {{ s.yearKey | translate }}</span>
