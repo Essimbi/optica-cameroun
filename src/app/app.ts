@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
 import { TranslationService } from './services/translation.service';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,9 @@ import { TranslationService } from './services/translation.service';
 export class App {
   title = 'optica';
   
+  private themeService = inject(ThemeService);
+  
   constructor(private translationService: TranslationService) {
-    // Le service s'initialise automatiquement
+    // Les services s'initialisent automatiquement
   }
 }

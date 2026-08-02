@@ -89,9 +89,9 @@
 .header-visual {
   border-radius: $radius-lg;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.1);
-  background: #111;
+  box-shadow: $shadow-large;
+  border: 1px solid $border-color;
+  background: $bg-surface-light;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,8 +130,8 @@
   font-size: 1.75rem;
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  color: #fff;
+  border-bottom: 1px solid $border-color;
+  color: $text-heading;
 }
 
 .block-text {
@@ -180,7 +180,7 @@
 }
 
 .topic-tag {
-  background-color: $bg-surface;
+  background-color: $bg-surface-light;
   border: $border-subtle;
   padding: 0.5rem 1rem;
   border-radius: $radius-full;
@@ -196,13 +196,13 @@
 }
 
 .day-header {
-  background-color: rgba($accent-blue, 0.05);
+  background-color: rgba($accent-blue, 0.08);
   border-left: 4px solid $accent-blue;
   padding: 1rem 1.5rem;
   border-radius: 0 $radius-md $radius-md 0;
   margin-bottom: 1.5rem;
   
-  h3 { font-size: 1.25rem; margin-bottom: 0.25rem; color: #fff; }
+  h3 { font-size: 1.25rem; margin-bottom: 0.25rem; color: $text-heading; }
   .day-theme { color: $accent-blue; font-size: 0.9375rem; font-weight: 500; }
 }
 
@@ -218,7 +218,7 @@
   grid-template-columns: 100px 1fr;
   gap: 1.5rem;
   padding: 1.5rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid $border-color;
   
   &:last-child { border-bottom: none; }
   
@@ -242,7 +242,7 @@
 .activity-col {
   h4 {
     font-size: 1.0625rem;
-    color: #fff;
+    color: $text-heading;
     margin-bottom: 0.25rem;
     line-height: 1.4;
   }
@@ -263,16 +263,17 @@
 }
 
 .sidebar-widget {
-  background-color: $bg-surface;
+  background-color: $bg-card;
   border: $border-subtle;
   border-radius: $radius-lg;
   padding: 2rem;
+  box-shadow: $shadow-light;
 }
 
 .widget-title {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: $text-heading;
 }
 
 .speakers-list {
@@ -291,7 +292,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: $bg-dark;
+  background-color: $bg-surface-light;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -301,7 +302,7 @@
 }
 
 .speaker-info {
-  h4 { font-size: 1rem; color: #fff; margin-bottom: 0.2rem; }
+  h4 { font-size: 1rem; color: $text-heading; margin-bottom: 0.2rem; }
   span { font-size: 0.8125rem; color: $text-muted; }
 }
 

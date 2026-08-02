@@ -22,12 +22,12 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      linear-gradient($grid-line-color 1px, transparent 1px),
+      linear-gradient(90deg, $grid-line-color 1px, transparent 1px);
     background-size: 40px 40px;
     transform: perspective(600px) rotateX(55deg) scale(2.5);
     transform-origin: top;
-    opacity: 0.35;
+    opacity: 0.6;
   }
 
   .radial-gradient {
@@ -69,7 +69,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1.25rem;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba($accent-blue, 0.08);
   border: $border-subtle;
   border-radius: $radius-full;
   color: $text-muted;
@@ -96,12 +96,13 @@
   line-height: 1.1;
   letter-spacing: -1px;
   margin-bottom: 1.5rem;
+  color: $text-heading;
 
   @media (min-width: 768px)  { font-size: 2.75rem; }
   @media (min-width: 1200px) { font-size: 3.25rem; }
 
   .highlight {
-    background: linear-gradient(100deg, #ffffff 0%, $accent-blue 70%);
+    background: linear-gradient(100deg, $text-heading 0%, $accent-blue 70%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -127,8 +128,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background-color: #ffffff;
-  color: $bg-dark;
+  background-color: $accent-blue;
+  color: #ffffff;
   padding: 0.9375rem 1.75rem;
   border-radius: $radius-md;
   font-family: $font-display;
@@ -136,13 +137,14 @@
   font-size: 0.9375rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba($accent-blue, 0.3);
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: $text-light;
+    background-color: $accent-blue-hover;
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px -8px rgba(255, 255, 255, 0.2);
-    color: $bg-dark;
+    box-shadow: 0 12px 30px -8px rgba($accent-blue, 0.45);
+    color: #ffffff;
   }
 }
 
@@ -150,8 +152,8 @@
   display: inline-flex;
   align-items: center;
   background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: $text-heading;
+  border: 1px solid $border-color;
   padding: 0.9375rem 1.75rem;
   border-radius: $radius-md;
   font-family: $font-display;
@@ -162,9 +164,9 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.5);
-    color: #fff;
+    background-color: $hover-overlay;
+    border-color: $accent-blue;
+    color: $accent-blue;
   }
 }
 
@@ -180,7 +182,7 @@
   font-family: $font-display;
   font-size: 2rem;
   font-weight: 700;
-  color: #fff;
+  color: $text-heading;
   line-height: 1;
 }
 .stat-label {
@@ -192,7 +194,7 @@
 .stat-divider {
   width: 1px;
   height: 36px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: $border-color;
   display: none;
   @media (min-width: 480px) { display: block; }
 }

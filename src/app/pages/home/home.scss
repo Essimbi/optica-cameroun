@@ -55,14 +55,24 @@
   z-index: 20;
 }
 
+/* =========================================
+   NEXT EVENT HIGHLIGHT
+   ========================================= */
+.highlight-section {
+  padding-top: 2rem;
+  margin-top: -4rem; /* Overlap hero slightly */
+  position: relative;
+  z-index: 20;
+}
+
 .highlight-card {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: $bg-surface;
+  background-color: $bg-card;
   border-radius: $radius-lg;
   border: 1px solid rgba($accent-blue, 0.3);
   overflow: hidden;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+  box-shadow: $shadow-large;
   
   @media (min-width: 992px) {
     grid-template-columns: 1fr 1fr;
@@ -93,6 +103,7 @@
 .highlight-title {
   font-size: clamp(1.75rem, 4vw + 1rem, 2.25rem);
   margin-bottom: 1.5rem;
+  color: $text-heading;
 }
 
 .highlight-meta {
@@ -128,7 +139,7 @@
 
 .highlight-image {
   min-height: 300px;
-  background-color: #1a1a1a;
+  background-color: $bg-surface-light;
   display: flex;
   
   .event-poster {
@@ -140,7 +151,7 @@
 }
 
 /* =========================================
-   ECOSYSTEM SPLIT GRID (Already done)
+   ECOSYSTEM SPLIT GRID
    ========================================= */
 .split-grid {
   display: grid;
@@ -157,23 +168,20 @@
   border-radius: $radius-lg;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  background-color: $bg-card;
+  border: $border-subtle;
+  box-shadow: $shadow-medium;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   
   &:hover {
     transform: translateY(-5px);
+    box-shadow: $shadow-large;
   }
 }
 
-.dark-card {
-  background-color: $bg-surface;
+.dark-card, .light-card {
+  background-color: $bg-card;
   border: $border-subtle;
-  
-  .card-icon { color: $accent-blue; }
-}
-
-.light-card {
-  background-color: #fff;
-  color: $bg-dark;
   
   .card-icon { color: $accent-blue; }
 }
@@ -182,14 +190,15 @@
 .card-title {
   font-size: clamp(1.5rem, 4vw, 1.75rem);
   margin-bottom: 1rem;
-  &.text-dark { color: $bg-dark; }
+  color: $text-heading;
+  &.text-dark { color: $text-heading; }
 }
 .card-text {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
   color: $text-muted;
-  &.text-dark-muted { color: #4B5563; }
+  &.text-dark-muted { color: $text-muted; }
 }
 .feature-list {
   list-style: none;
@@ -197,10 +206,10 @@
   display: flex; flex-direction: column; gap: 0.75rem;
   
   li {
-    position: relative; padding-left: 1.5rem; font-weight: 500;
+    position: relative; padding-left: 1.5rem; font-weight: 500; color: $text-light;
     &::before { content: '→'; position: absolute; left: 0; color: $accent-blue; }
   }
-  &.dark-text li { color: $bg-dark; }
+  &.dark-text li { color: $text-light; }
 }
 
 /* =========================================
@@ -225,21 +234,23 @@
 }
 
 .event-mini-card {
-  background-color: $bg-dark;
+  background-color: $bg-card;
   border-radius: $radius-md;
   overflow: hidden;
   border: $border-subtle;
+  box-shadow: $shadow-light;
   transition: all 0.3s ease;
   
   &:hover {
     transform: translateY(-4px);
     border-color: rgba($accent-blue, 0.4);
+    box-shadow: $shadow-medium;
   }
 }
 
 .event-mini-image {
   height: 160px;
-  background: linear-gradient(45deg, #111, #222);
+  background: $bg-surface-light;
 }
 
 .event-mini-content {
@@ -260,6 +271,7 @@
   font-size: 1.125rem;
   margin-bottom: 1rem;
   line-height: 1.4;
+  color: $text-heading;
 }
 
 .event-mini-date {
@@ -291,15 +303,16 @@
 }
 
 .testimonial-card {
-  background-color: $bg-surface;
+  background-color: $bg-card;
   padding: 2.5rem;
   border-radius: $radius-lg;
   border: $border-subtle;
+  box-shadow: $shadow-medium;
   position: relative;
 }
 
 .quote-icon {
-  color: rgba($accent-blue, 0.2);
+  color: rgba($accent-blue, 0.15);
   position: absolute;
   top: 2rem;
   right: 2.5rem;
@@ -326,12 +339,13 @@
   height: 50px;
   border-radius: 50%;
   background-color: $accent-blue;
-  background-image: linear-gradient(45deg, $accent-blue, #fff);
+  background-image: linear-gradient(135deg, $accent-blue, rgba($accent-blue, 0.4));
 }
 
 .author-name {
   font-size: 1rem;
   margin-bottom: 0.25rem;
+  color: $text-heading;
 }
 
 .author-role {
@@ -345,6 +359,11 @@
 .partners-section {
   padding: 4rem 0;
   border-top: $border-subtle;
+}
+
+.hosting-section {
+  padding: 4rem 0;
+  background-color: $bg-surface-light;
 }
 
 .partners-title {
@@ -361,7 +380,7 @@
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  opacity: 0.6;
+  opacity: 0.8;
   
   @media (min-width: 768px) { gap: 5rem; }
 }
@@ -396,13 +415,14 @@
    FINAL CTA
    ========================================= */
 .cta-box {
-  background: linear-gradient(135deg, $bg-surface 0%, #102a43 100%);
+  background: linear-gradient(135deg, $bg-surface 0%, rgba($accent-blue, 0.08) 100%);
   border-radius: $radius-lg;
   padding: 4rem 2rem;
   text-align: center;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba($accent-blue, 0.2);
+  border: 1px solid rgba($accent-blue, 0.25);
+  box-shadow: $shadow-large;
   
   @media (min-width: 768px) { padding: 5rem; }
 }
@@ -410,7 +430,7 @@
 .cta-bg-effect {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle at top right, rgba($accent-blue, 0.2) 0%, transparent 60%);
+  background: radial-gradient(circle at top right, rgba($accent-blue, 0.15) 0%, transparent 60%);
   z-index: 0;
 }
 
@@ -424,14 +444,14 @@
 .cta-title {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
+  color: $text-heading;
   
   @media (min-width: 768px) { font-size: clamp(2rem, 5vw + 1rem, 3rem); }
 }
 
 .cta-desc {
   font-size: 1.125rem;
-  color: $text-light;
-  opacity: 0.9;
+  color: $text-muted;
   margin-bottom: 2.5rem;
 }
 
@@ -454,23 +474,23 @@
   font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px;
   transition: all 0.3s ease; border: none; cursor: pointer;
   
-  &:hover { background-color: $accent-blue-hover; transform: translateY(-2px); }
+  &:hover { background-color: $accent-blue-hover; transform: translateY(-2px); color: #fff; }
 }
 
 .btn-secondary {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  background: transparent; color: $text-light; padding: 0.75rem 1.5rem;
+  background: transparent; color: $text-heading; padding: 0.75rem 1.5rem;
   border-radius: $radius-md; font-family: $font-display; font-weight: 600;
   font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px;
   transition: all 0.3s ease; border: $border-subtle; cursor: pointer;
   
-  &:hover { background-color: rgba(255,255,255,0.05); color: #fff; }
+  &:hover { background-color: $hover-overlay; color: $accent-blue; }
 }
 
 .btn-secondary-light {
   @extend .btn-secondary;
-  border-color: rgba(255,255,255,0.3);
-  &:hover { border-color: #fff; }
+  border-color: $border-color;
+  &:hover { border-color: $accent-blue; color: $accent-blue; }
 }
 .full-width { width: 100%; }
 .text-center { text-align: center; }
@@ -478,14 +498,14 @@
    CHAPTER KEY STATS
    ========================================= */
 .stats-section {
-  background-color: $bg-surface;
+  background-color: $bg-surface-light;
   padding: 3rem 0;
 }
 
 .stats-title {
   font-size: 1.5rem;
   margin-bottom: 2.5rem;
-  color: $text-light;
+  color: $text-heading;
 }
 
 .stats-grid {
@@ -501,11 +521,12 @@
 }
 
 .stat-card {
-  background-color: $bg-dark;
+  background-color: $bg-card;
   border: $border-subtle;
   border-radius: $radius-lg;
   padding: 1.5rem;
   text-align: center;
+  box-shadow: $shadow-light;
   transition: transform 0.3s ease;
 
   &:hover {

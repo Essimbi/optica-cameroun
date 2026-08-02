@@ -1,17 +1,69 @@
-$bg-dark: #050505;
-$bg-surface: #111111;
-$bg-surface-light: #1A1A1A;
-$text-light: #F3F4F6;
-$text-muted: #A1A1AA;
-$accent-blue: #0EA5E9; // Striking cyan-ish blue for tech feel
-$accent-blue-hover: #38BDF8;
-
+// Font families
 $font-sans: 'Inter', sans-serif;
 $font-display: 'Outfit', sans-serif;
 
+// Border radius
 $radius-sm: 2px;
 $radius-md: 4px;
 $radius-lg: 8px;
 $radius-full: 9999px;
 
-$border-subtle: 1px solid rgba(255, 255, 255, 0.1);
+// CSS Custom Properties pour les thèmes
+:root {
+  // Light theme (défaut)
+  --bg-dark: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-light: #F1F5F9;
+  --bg-card: #FFFFFF;
+  --text-light: #334155;
+  --text-heading: #0F172A;
+  --text-muted: #64748B;
+  --accent-blue: #0284C7;
+  --accent-blue-hover: #0369A1;
+  --border-subtle: 1px solid #E2E8F0;
+  --border-color: #E2E8F0;
+  --shadow-light: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-large: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --grid-line-color: rgba(0, 0, 0, 0.04);
+  --hover-overlay: rgba(0, 0, 0, 0.05);
+}
+
+// Dark theme
+[data-theme="dark"] {
+  --bg-dark: #050505;
+  --bg-surface: #111111;
+  --bg-surface-light: #1A1A1A;
+  --bg-card: #111111;
+  --text-light: #E2E8F0;
+  --text-heading: #FFFFFF;
+  --text-muted: #94A3B8;
+  --accent-blue: #0EA5E9;
+  --accent-blue-hover: #38BDF8;
+  --border-subtle: 1px solid rgba(255, 255, 255, 0.1);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-light: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-large: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  --grid-line-color: rgba(255, 255, 255, 0.025);
+  --hover-overlay: rgba(255, 255, 255, 0.05);
+}
+
+// Variables SCSS pour compatibilité (utilisant les CSS custom properties)
+$bg-dark: var(--bg-dark);
+$bg-surface: var(--bg-surface);
+$bg-surface-light: var(--bg-surface-light);
+$bg-card: var(--bg-card);
+$text-light: var(--text-light);
+$text-heading: var(--text-heading);
+$text-muted: var(--text-muted);
+$accent-blue: var(--accent-blue);
+$accent-blue-hover: var(--accent-blue-hover);
+$border-subtle: var(--border-subtle);
+$border-color: var(--border-color);
+$shadow-light: var(--shadow-light);
+$shadow-medium: var(--shadow-medium);
+$shadow-large: var(--shadow-large);
+$grid-line-color: var(--grid-line-color);
+$hover-overlay: var(--hover-overlay);
+

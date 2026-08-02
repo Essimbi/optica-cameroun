@@ -18,6 +18,7 @@
 
     <!-- Desktop Actions -->
     <div class="desktop-actions">
+      <app-theme-toggle></app-theme-toggle>
       <div class="lang-selector" (click)="toggleLangMenu()">
         <lucide-icon [img]="Globe" size="18"></lucide-icon>
         <span class="lang-text">{{ currentLang() }}</span>
@@ -53,6 +54,7 @@
       <a routerLink="/partners" (click)="toggleMobileMenu()" class="mobile-nav-link">{{ 'HEADER.PARTNERS' | translate }}</a>
       <a routerLink="/contact" (click)="toggleMobileMenu()" class="mobile-nav-link">{{ 'HEADER.CONTACT' | translate }}</a>
       <div class="mobile-actions">
+        <app-theme-toggle></app-theme-toggle>
         <button class="btn-lang" (click)="setLang(currentLang() === 'EN' ? 'FR' : 'EN')">
           <lucide-icon [img]="Globe" size="18"></lucide-icon>
           Switch to {{ currentLang() === 'EN' ? 'FR' : 'EN' }}

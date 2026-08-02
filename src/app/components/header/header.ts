@@ -3,11 +3,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideAngularModule, Menu, X, Globe, ChevronDown } from 'lucide-angular';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { TranslationService } from '../../services/translation.service';
+import { ThemeToggle } from '../theme-toggle/theme-toggle';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, LucideAngularModule, TranslatePipe],
+  imports: [RouterLink, RouterLinkActive, LucideAngularModule, TranslatePipe, ThemeToggle],
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
